@@ -10,6 +10,7 @@ $_id = NULL;
 if (!empty($_GET['id'])) {
     $_id = $_GET['id'];
     $user = $userModel->findUserById($_id); //Update existing user
+    $currentRowVersion = $user[0]['row_version']; //lấy row_version của user
 }
 
 
@@ -42,6 +43,7 @@ if (!empty($_POST['submit'])) {
             </div>
             <form method="POST">
                 <input type="hidden" name="id" value="<?php echo $_id ?>">
+                <input type="hidden" name="row_version" value="<?php echo $currentRowVersion; ?>">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input class="form-control" name="name" id="inputName" placeholder="Name" value='<?php if (!empty($user[0]['name'])) echo $user[0]['name'] ?>'>
