@@ -12,6 +12,9 @@ if (!empty($_GET['id'])) {
     $user = $userModel->findUserById($_id); //Update existing user
     $currentRowVersion = $user[0]['row_version']; //lấy row_version của user
 }
+else{
+    $currentRowVersion = null;
+}
 
 
 if (!empty($_POST['submit'])) {
