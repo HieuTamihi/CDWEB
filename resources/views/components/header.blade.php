@@ -72,7 +72,7 @@
                             <a class="nav-link text-white" href="#">Việc làm IT</a>
                         </li>
                         <li class="nav-item p-2">
-                            <a class="nav-link text-white" href="#">Tạo CV</a>
+                            <a class="nav-link text-white" href="{{asset('cv.addCV')}}">Tạo CV</a>
                         </li>
                         <li class="nav-item p-2">
                             <a class="nav-link text-white" href="#">Việc làm IT Fresher</a>

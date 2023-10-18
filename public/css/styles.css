@@ -140,6 +140,16 @@ header ul li a:hover {
 .swiper-button-next1 {
     right: 1%;
 }
+/*Create CV*/
+.bg-secondary{
+    background: #EFEFEF !important;
+}
+
+.required-input::after{
+    content: "(*)";
+    margin-left: 15px;
+    color: red;
+}
 
 /*responsive*/
 @media only screen and (max-width: 600px) {
