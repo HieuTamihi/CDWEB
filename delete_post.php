@@ -11,11 +11,11 @@ require_once 'models/UserModel.php';
 $userModel = new UserModel();
 
 $user_id = NULL;
-
+//"kiểm tra token và id"
 if (!empty($_GET['user_id']) && !empty($_GET['token'])) {
     $user_id = $_GET['user_id'];
     $token = $_GET['token'];
-
+    //token là gắn cứng trực tiếp
     if ($_SESSION['id'] == $user_id && $_SESSION['token'] == $token) {
         $result = $userModel->deletePostById($user_id);
         if ($result) {

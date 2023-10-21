@@ -112,6 +112,7 @@ class UserModel extends BaseModel
      * @param array $params
      * @return array
      */
+    //tim kiem thay doi prepare cho pram
     public function getUsers($params = [])
     {
         //Keyword
