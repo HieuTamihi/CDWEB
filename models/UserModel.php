@@ -127,9 +127,9 @@ class UserModel extends BaseModel
             $users = $this->query($sql);
         } else {
             // sql reject
-            // $sql = 'SELECT * FROM users';
+            $sql = 'SELECT * FROM users';
             //csrf
-            $sql = 'SELECT * FROM post';
+            // $sql = 'SELECT * FROM post';
             $users = $this->select($sql);
         }
 

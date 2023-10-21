@@ -38,7 +38,7 @@ if (isset($_SESSION['success_message'])) {
                 Hacker: http://php.local/list_users.php?keyword=ASDF%25%22%3BTRUNCATE+banks%3B%23%23
             </div>
             <!-- sql -->
-            <!-- <table class="table table-striped">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -75,10 +75,10 @@ if (isset($_SESSION['success_message'])) {
                         </tr>
                     <?php } ?>
                 </tbody>
-            </table> -->
+            </table>
 
             <!-- csrf -->
-            <table class="table table-striped">
+            <!-- <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -98,12 +98,6 @@ if (isset($_SESSION['success_message'])) {
                                 <?php echo $user['post_description'] ?>
                             </td>
                             <td>
-                                <!-- <a href="form_user.php?id=<?php echo $user['post_id'] ?>">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
-                                </a>
-                                <a href="view_user.php?id=<?php echo $user['post_id'] ?>">
-                                    <i class="fa fa-eye" aria-hidden="true" title="View"></i>
-                                </a> -->
                                 <a href="delete_post.php?user_id=<?php echo $user['user_id'] ?>&token=<?php echo $user['token'] ?>">
                                     <i class="fa fa-eraser" aria-hidden="true" title="Delete"></i>
                                 </a>
@@ -111,7 +105,7 @@ if (isset($_SESSION['success_message'])) {
                         </tr>
                     <?php } ?>
                 </tbody>
-            </table>
+            </table> -->
         <?php } else { ?>
             <div class="alert alert-dark" role="alert">
                 This is a dark alert—check it out!
