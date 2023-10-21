@@ -44,11 +44,12 @@
                         </div>
                     </div>
                     <div class="col-md-4">
+                        <img src="" alt="">
                         <input type="file" accept="image/*">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">
-                    <button type="submit" class="btn btn-primary">Lưu CV</button>
+                    <button type="submit" class="btn btn-primary">Cập nhật CV</button>
                 </div>
             </form>
         </div>

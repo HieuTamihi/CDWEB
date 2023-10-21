@@ -150,6 +150,17 @@ header ul li a:hover {
     margin-left: 15px;
     color: red;
 }
+.avt-cv{
+    border-radius: 50%;
+}
+
+.title-job-fea {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    height: 25px;
+}
 
 /*responsive*/
 @media only screen and (max-width: 600px) {
