@@ -29,7 +29,7 @@
                 <div class="col-md-6">
                     <div class="d-flex align-items-center">
                         <div class="image-logo w-25">
-                            <a href="#">
+                            <a href="{{asset('index')}}">
                                 <img src="https://assets.topdev.vn/static/assets/desktop/images/logo-td.png"
                                     alt="" class="w-100">
                             </a>
@@ -69,13 +69,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item p-2">
-                            <a class="nav-link text-white" href="#">Việc làm IT</a>
+                            <a class="nav-link text-white" href="{{asset('search_job.jobs')}}">Việc làm IT</a>
                         </li>
                         <li class="nav-item p-2">
                             <a class="nav-link text-white" href="{{asset('cv.addCV')}}">Tạo CV</a>
                         </li>
                         <li class="nav-item p-2">
                             <a class="nav-link text-white" href="#">Việc làm IT Fresher</a>
+                        </li>
+                        <li class="nav-item p-2">
+                            <a class="nav-link text-white" href="{{asset('blog.index')}}">Blog IT</a>
                         </li>
                     </ul>
                 </div>
