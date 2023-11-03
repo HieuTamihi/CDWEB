@@ -86,9 +86,17 @@
                             <span><i class="fa-solid fa-arrow-right"></i></span>
                         </button>
                     </a>
-                    <a href="#">
-                        <button class="text-white py-2 px-4 border border-white bg-dark">Đăng Nhập</button>
-                    </a>
+                    @if (Request::path() !== 'login')
+
+     <a href="{{asset('/login')}}">
+        <button class="text-white py-2 px-4 border border-white bg-dark">Đăng Nhập</button>
+    </a>
+
+@else
+<a href="{{asset('/login')}}" hidden>
+    <button class="text-white py-2 px-4 border border-white bg-dark">Đăng Nhập</button>
+</a>
+@endif
                 </div>
             </div>
         </nav>
