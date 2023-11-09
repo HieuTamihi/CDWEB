@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.text-xs {
+    font-size: 15px;
+}
+
+/*Container*/
+.container {
+    max-width: 1220px !important;
+}
+
+/*HEADER*/
+.login-post .bg-dangtuyen {
+    background-color: #BF3E28;
+}
+
+.login-post .bg-dangtuyen:hover {
+    background-color: #ffff !important;
+    color: #BF3E28 !important;
+    border: 1px solid #BF3E28 !important;
+}
+
+header ul li a:hover {
+    color: #BF3E28 !important;
+}
+
+/*FOOTER*/
+.footer {
+    background: #EFEFEF;
+}
+
+.footer .col-md-2 .justify-content-between i {
+    font-size: 30px;
+}
+
+.footer ul li a:hover {
+    color: #BF3E28 !important;
+}
+
+/*SEARCH*/
+.search-job input {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.search-job {
+    width: 73%;
+}
+
+.filert-location {
+    width: 15%;
+}
+
+.btn-search-job {
+    background-color: #DD3F24;
+}
+
+/*INDEX*/
+.cut-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 75px;
+}
+
+.swiper1 {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    height: 200px;
+}
+
+.swiper2 {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+.swiper3 {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    height: 180px;
+}
+
+.swiper4 {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    height: 500px;
+}
+
+.swiper-pagination-bullet-active{
+    background-color: #DD3F24 !important;
+}
+
+.swiper-pagination-bullet{
+    width: var(--swiper-pagination-bullet-width,var(--swiper-pagination-bullet-size,15px)) !important;
+    height: var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,15px)) !important;
+}
+
+.container .bg-secondary-index {
+    background-color: #EFEFEF;
+}
+
+.swiper-button-next1,
+.swiper-button-prev1 {
+    position: absolute;
+    top: 50%;
+    width: calc(var(--swiper-navigation-size)/ 44 * 27);
+    height: var(--swiper-navigation-size);
+    margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next1 {
+    right: 1%;
+}
+/*Create CV*/
+.bg-secondary{
+    background: #EFEFEF !important;
+}
+
+.required-input::after{
+    content: "(*)";
+    margin-left: 15px;
+    color: red;
+}
+.avt-cv{
+    border-radius: 50%;
+}
+
+.title-job-fea {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    height: 25px;
+}
+
+/*responsive*/
+@media only screen and (max-width: 600px) {
+    .search-job-container .d-flex {
+        display: block !important;
+    }
+
+    .search-job {
+        width: 100% !important;
+    }
+
+    .filert-location {
+        width: 100% !important;
+    }
+    .swiper4 {
+        height: 2110px;
+    }
+}
