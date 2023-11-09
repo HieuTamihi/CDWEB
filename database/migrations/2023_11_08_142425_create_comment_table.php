@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('post_id')->unique();
             $table->integer('customer_id')->unique();
-            $table->string('content_comment');
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
+            $table->string('Title');
+            $table->string('Comment')->nullable();
             $table->timestamps();
         });
     }

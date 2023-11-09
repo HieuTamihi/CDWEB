@@ -13,17 +13,21 @@ return new class extends Migration
     {
         Schema::create('cv', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id')->unique();
+            $table->integer('customer_id');
+            $table->string('Name_CV');
             $table->string('full_name');
+            $table->integer('gender');
             $table->string('avatar')->nullable();
-            $table->string('enjoy_tech');           
-            $table->string('apply_position');
-            $table->string('email')->unique();
-            $table->integer('phone_number');
-            $table->string('gender');
+            $table->string('apply_position')->nullable();
+            $table->string('email');
+            $table->string('phone_number');
+            $table->date('Date');
             $table->string('exp_work')->nullable();
-            $table->string('skills')->nullable();
-            $table->string('infor_order');
+            $table->string('School_name')->nullable();
+            $table->string('Learn_time')->nullable();
+            $table->string('Majors')->nullable();
+            $table->string('infor_order')->nullable();
+            $table->integer('Status');
             $table->timestamps();
         });
     }

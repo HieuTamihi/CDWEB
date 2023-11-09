@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('wishlist', function (Blueprint $table) {
             $table->id();
+            $table->integer('Customer_id');
+            $table->integer('Job_posting_id');
             $table->timestamps();
         });
     }

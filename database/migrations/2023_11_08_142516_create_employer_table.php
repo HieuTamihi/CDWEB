@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('employer', function (Blueprint $table) {
             $table->id();
+            $table->integer('User_id');
+            $table->text('Website')->nullable();
+            $table->string('Infor')->nullable();
+            $table->string('Responsibility')->nullable();
+            $table->string('Welfare')->nullable();
             $table->string('name_company')->nullable();
             $table->string('address');
             $table->string('image');

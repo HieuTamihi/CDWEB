@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('customer_id')->unique();
             $table->integer('job_posting_id')->unique();
-            $table->timestamp('sent_date');
-            $table->string('status');
+            $table->integer('CV_id');
+            $table->integer('Status');
+            $table->string('Introduce')->nullable();
+            $table->string('File')->nullable();
             $table->timestamps();
         });
     }

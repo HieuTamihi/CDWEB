@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('customer', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->integer('phone_number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('full_name');
-            $table->string('gender')->nullable();
+            $table->date('Date');
+            $table->text('Address')->nullable();
+            $table->integer('gender')->nullable();
+            $table->text('Favorite')->nullable();
             $table->integer('status');
             $table->timestamps();
         });
