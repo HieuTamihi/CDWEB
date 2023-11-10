@@ -42,7 +42,15 @@ class CustomerSeeder extends Seeder
                 'gender' => '1',
                 'status' => '1',              
             ],
-            
+            [
+                'email' => 'hello2@gmail.com',
+                'phone_number' => '0522622700',
+                'full_name' => 'Trần Văn C',
+                'Date' => '2022-11-25',
+                'Address' => 'Võ Văn Ngân, Thủ Đức',
+                'gender' => '1',
+                'status' => '1',              
+            ],
         ]);
     }
 }

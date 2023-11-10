@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('experience');
             $table->string('type');
-            $table->string('skills');
-            $table->string('required')->nullable();
+            $table->text('skills');
+            $table->text('required')->nullable();
             $table->string('salary');
             $table->timestamps();
         });

@@ -66,21 +66,21 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{asset('admin.employer.index')}}">
+                <a class="nav-link" href="{{asset('admin.recruitment.index')}}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Danh sách ứng tuyển</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{asset('admin.employer.index')}}">
+                <a class="nav-link" href="{{asset('admin.job.index')}}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Danh sách công việc</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{asset('admin.employer.index')}}">
+                <a class="nav-link" href="{{asset('admin.blog.index')}}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Quản lý Blog</span>
                 </a>
