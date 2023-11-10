@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->integer('customer_id');
-            $table->integer('comment_id');
+            $table->integer('comment_id')->nullable();
             $table->string('title');
             $table->text('content');
             $table->string('Image')->nullable();
             $table->integer('Views')->nullable();
             $table->integer('Report_id')->nullable();
+            $table->integer('status');
             $table->timestamps();
         });
     }
