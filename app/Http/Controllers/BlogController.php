@@ -11,6 +11,7 @@ class BlogController extends Controller
      * Display a listing of the resource.
      */
     private $blog;
+    private $blogs;
     public function __construct()
     {
         $this->blog = new Blog();
@@ -20,7 +21,14 @@ class BlogController extends Controller
         $blogNew = $this->blog->getBlogNew();
         return view('users.blog.index', compact('blogNew'));
     }
+    public function indexadmin()
+    {
+        $blogs = Blog::all();
 
+        return view('admin.blog.index', [
+            'blogs' => $blogs,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -23,4 +23,9 @@ class Blog extends Model
         $blogNew = Blog::orderBy('posts.id', 'desc')->paginate(12);
         return $blogNew;
     }
+    public function getBlogAdmin()
+    {
+        $blogs = Blog::orderBy('posts.id', 'desc')->paginate(12);
+        return $blogs;
+    }
 }

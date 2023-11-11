@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 //Blog
 Route::resource('blog', BlogController::class);
-
+Route::get('/admin.blog.index', [BlogController::class, 'indexadmin'])->name('blog.indexadmin');
 Route::get('/login', function () {
     return view('login');
 });
