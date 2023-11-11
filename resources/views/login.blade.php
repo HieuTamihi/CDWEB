@@ -19,7 +19,7 @@
                                     <span class="line-clamp-1">Nhà tuyển dụng</span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul>                
                         <div id="tab-form" class="tab-content">
                             <div id="tab-user" class="tab-item tab-user active" tab-target="tab-user">
                                 <h2 class="title">

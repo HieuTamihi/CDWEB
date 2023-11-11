@@ -30,10 +30,10 @@
                             <td>Đã duyệt</td>
                             <td>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#">
+                                    <a href="admin.recruitment.create">
                                         <i class="fa-solid fa-plus"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="admin.recruitment.edit">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a href="#">

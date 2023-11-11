@@ -34,10 +34,10 @@
                                <td>Đã nộp đơn</td>
                             <td>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#">
+                                    <a href="admin.job.create">
                                         <i class="fa-solid fa-plus"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="admin.job.edit">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a href="#">

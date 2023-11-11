@@ -28,10 +28,10 @@
                             <td>2011/04/25</td>
                             <td>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#">
+                                    <a href="admin.employer.create">
                                         <i class="fa-solid fa-plus"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="admin.employer.edit">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a href="#">
