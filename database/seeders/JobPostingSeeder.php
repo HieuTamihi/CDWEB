@@ -24,6 +24,7 @@ class JobPostingSeeder extends Seeder
                 Sử dụng thành thạo cơ sở dữ liệu MySQL, PostgrepSQL.',
                 'required' => 'Khả năng trình bày, giao tiếp: Rõ ràng, logic và khá lưu loát.',
                 'salary' => '1000$',
+                'status' => 1,
             ],
             [
                 'employer_id' => 2,
@@ -36,6 +37,7 @@ class JobPostingSeeder extends Seeder
                 Integrate applications with third-party services and APIs.
                 Design and implement database schemas and queries.',
                 'salary' => '1500$',
+                'status' => 1,
             ],
             [
                 'employer_id' => 3,
@@ -47,6 +49,7 @@ class JobPostingSeeder extends Seeder
                 'required' => 'Chủ động, trách nhiệm cao với công việc, khả năng cống hiến và gắn bó lâu dài với Công ty.
                 Đọc hiểu tài liệu Tiếng Anh',
                 'salary' => '2000$',
+                'status' => 1,
             ],
             [
                 'employer_id' => 4,
@@ -58,6 +61,7 @@ class JobPostingSeeder extends Seeder
                 'required' => 'Kiến thức về phương pháp phát triển, an ninh mạng và có mối quan tâm sâu sắc đến các công nghệ mới và cải tiến hệ thống nói chung.
                 Đọc hiểu và viết tài liệu chuyên ngành bằng tiếng Anh.',
                 'salary' => '2000$',
+                'status' => 1,
             ],
             [
                 'employer_id' => 5,
@@ -69,6 +73,7 @@ class JobPostingSeeder extends Seeder
                 'required' => 'Implement back-end features & business logic, design database & write efficient queries.
                 Build and maintain backend systems for cloud platform projects with Python.',
                 'salary' => '3000$',
+                'status' => 1,
             ],
             [
                 'employer_id' => 6,
@@ -80,8 +85,8 @@ class JobPostingSeeder extends Seeder
                 'required' => 'Bachelor’s degree in computer science, Software development, Information technology, or experiences in other related fields, etc. 
                 From 3+ years of frontend software development experience in software/digital product company',
                 'salary' => '1000$',
+                'status' => 1,
             ],
-
         ]);
     }
 }

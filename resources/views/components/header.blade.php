@@ -81,7 +81,7 @@
                             <a class="nav-link text-white" href="#">Việc làm IT Fresher</a>
                         </li>
                         <li class="nav-item p-2">
-                            <a class="nav-link text-white" href="{{asset('blog.index')}}">Blog IT</a>
+                            <a class="nav-link text-white" href="{{route('blog.index')}}">Blog IT</a>
                         </li>
                     </ul>
                 </div>

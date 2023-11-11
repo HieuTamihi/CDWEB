@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('skills');
             $table->text('required')->nullable();
             $table->string('salary');
+            $table->string('status');
             $table->timestamps();
         });
     }
