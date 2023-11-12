@@ -23,7 +23,8 @@
                             @foreach ($blogs as $blog )
                             <td>{{$blog->id}}</td>
                             <td>{{$blog->title}}</td>
-                            <td><img src="{{ asset('blog->image') }}" alt=""></td>
+                            <td style= "width: 25%"><img src="images/blog/{{$blog->Image}}" alt="" style="width : 100%; height : 100%"></td>
+
                             @if ($blog->status == 1)
                             <td>Đã duyệt</td>
                             @else

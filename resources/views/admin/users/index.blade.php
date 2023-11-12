@@ -34,7 +34,7 @@
                                     <a href="#">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="blogs.destroy/ {{$blog}}">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </div>

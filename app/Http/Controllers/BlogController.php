@@ -72,8 +72,10 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, Blog $blog)
     {
-        //
+        $blog->delete();
+
+        return redirect()->route('blogs.indexadmin')->with('success', 'Blog post deleted successfully.');
     }
 }
