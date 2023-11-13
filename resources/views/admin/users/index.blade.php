@@ -10,22 +10,24 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
+
                         <tr>
-                            <th>Tên</th>
-                            <th>Số điện thoại</th>
-                            <th>Ngày sinh</th>
-                            <th>Địa chỉ</th>
-                            <th>Tình trạng</th>
+                            <td>ID</td>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($users as $user)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $job->name }}</td>
+                            <td>{{ $job->email }}</td>
+                            <td>{{ $job->created_at }}</td>
+                            <td>{{ $job->updated_at }}</td>
                             <td>
                                 <div class="d-flex justify-content-between">
                                     <a href="#">
@@ -34,12 +36,14 @@
                                     <a href="#">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="blogs.destroy/ {{$blog}}">
+                                    <a href="#">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </div>
                             </td>
                         </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
