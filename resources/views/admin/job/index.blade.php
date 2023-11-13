@@ -1,4 +1,5 @@
-<x-header-admin></x-header-admin>
+<x-header-admin>
+</x-header-admin>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -11,41 +12,40 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Tiêu đề</th>
+                            <th>ID</th>
                             <th>Tên công việc</th>
                             <th>Kinh nghiệm</th>
                             <th>Cấp bậc</th>
                             <th>Kĩ năng</th>
                             <th>Lương</th>
-                            <th>Tình trạng</th>
+
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>IT Risk Management</td>
-                            <td>lập trình Back-End</td>
-                            <td>5 năm</td>
-                            <td>Senior</td>
-                            <td>Deep knowledge of information security & risk assessment <br>
-                                Experience in pentest is a plus
-                             </td>
-                             <td>1000$</td>
-                               <td>Đã nộp đơn</td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($jobs as $job)
+                            <tr>
+                                <td>{{ $job->id }}</td>
+                                <td>{{ $job->title }}</td>
+                                <td>{{ $job->experience }}</td>
+                                <td>{{ $job->type }}</td>
+                                <td>{{ $job->skills }}</td>
+                                <td>{{ $job->salary }}</td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
