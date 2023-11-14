@@ -84,3 +84,16 @@ const swiper4 = new Swiper(".swiper4", {
         },
     },
 })
+
+//
+document.getElementById('login-customer').addEventListener('click', function () {
+    // Hiển thị tab-customer-login và ẩn tab-employer-login
+    document.querySelector('.tab-customer-login').classList.remove('anDangNhap');
+    document.querySelector('.tab-employer-login').classList.add('anDangNhap');
+});
+
+document.getElementById('login-employer').addEventListener('click', function () {
+    // Hiển thị tab-employer-login và ẩn tab-customer-login
+    document.querySelector('.tab-employer-login').classList.remove('anDangNhap');
+    document.querySelector('.tab-customer-login').classList.add('anDangNhap');
+});

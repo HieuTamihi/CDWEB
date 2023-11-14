@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->integer('User_id');
             $table->text('Website')->nullable();
-            $table->string('Infor')->nullable();
-            $table->string('Responsibility')->nullable();
-            $table->string('Welfare')->nullable();
+            $table->text('Infor')->nullable();
+            $table->text('Responsibility')->nullable();
+            $table->text('Welfare')->nullable();
             $table->string('name_company')->nullable();
             $table->string('address');
             $table->string('image');
             $table->string('email')->nullable();
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }

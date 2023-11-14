@@ -27,6 +27,36 @@ header ul li a:hover {
     color: #BF3E28 !important;
 }
 
+.hover-item-login {
+    cursor: pointer;
+}
+
+.hover-item-login:hover .arrow-login {
+    transform: rotate(180deg) translateZ(0);
+    animation-delay: 1s;
+    transition-duration: .3s;
+}
+
+.login-post .option {
+    display: none;
+    width: 150%;
+    z-index: 99;
+}
+
+.login-post .position-relative:hover .option {
+    display: block;
+    animation-delay: 1s;
+    transition-duration: .3s;
+}
+
+.login-post .option li:hover{
+    background-color: #EFEFEF;
+}
+
+.login-post .option li:hover span{
+    color: #BF3E28;
+}
+
 /*FOOTER*/
 .footer {
     background: #EFEFEF;
@@ -67,7 +97,7 @@ header ul li a:hover {
     height: 75px;
 }
 
-.cut-contentblog{
+.cut-contentblog {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -1010,6 +1040,10 @@ html {
 
 .default-content .detail-content .small-text {
     font-size: 0.75rem;
+}
+
+.anDangNhap{
+    display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
