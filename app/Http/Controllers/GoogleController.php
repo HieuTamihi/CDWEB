@@ -35,7 +35,7 @@ class GoogleController extends Controller
             $newUser->name = $user->getName();
             $newUser->email = $user->getEmail();
             $newUser->status = 1;
-            $newUser->role = 1;
+            $newUser->role = 2;
             $newUser->save();
 
             // Đăng nhập người dùng mới tạo

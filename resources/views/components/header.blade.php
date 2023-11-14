@@ -107,7 +107,7 @@
                         <div class="position-relative">
                             <div
                                 class="text-white d-flex justify-content-center align-items-center py-2 px-2 hover-item-login">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                <svg class="mr-1" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                                     class="hidden h-5 w-5 lg:block" height="1em" width="1em"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill="none" d="M0 0h24v24H0z"></path>
@@ -118,7 +118,7 @@
                                 <div class="tenNguoiDung">
                                     <span>{{ Auth::user()->name }}</span>
                                 </div>
-                                <svg class="arrow-login" stroke="currentColor" fill="currentColor" stroke-width="0"
+                                <svg class="arrow-login ml-1" stroke="currentColor" fill="currentColor" stroke-width="0"
                                     viewBox="0 0 24 24"
                                     class="transition duration-500 group-hover/button:rotate-180 lg:h-5 lg:w-5"
                                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
