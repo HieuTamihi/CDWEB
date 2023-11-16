@@ -1,4 +1,5 @@
 <x-header-admin></x-header-admin>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -11,21 +12,22 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Tên công ty</th>
                             <th>Hình ảnh</th>
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
-                            <th>Tình trạng</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($employers as $employer)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
+                            <td>{{ $employer->id }}</td>
+                            <td>{{ $employer->name_company }}</td>
+                            <td style= "width: 25%"><img src="images/employer/{{$employer->Image}}" alt="" style="width : 100%; height : 100%"></td>
+                            <td>{{ $employer->phone_number }}</td>
+                            <td>{{ $employer->address }}</td>
                             <td>
                                 <div class="d-flex justify-content-between">
                                     <a href="admin.employer.create">
@@ -40,6 +42,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

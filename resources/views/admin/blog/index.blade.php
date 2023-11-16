@@ -20,10 +20,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Tổng hợp các lệnh Linux dùng để xử lý các vấn đề</td>
-                            <td><img src="{{ asset('images/company/acb.png') }}" alt=""></td>
+                            @foreach ($blogs as $blog )
+                            <td>{{$blog->id}}</td>
+                            <td>{{$blog->title}}</td>
+                            <td style= "width: 25%"><img src="images/blog/{{$blog->Image}}" alt="" style="width : 100%; height : 100%"></td>
+
+                            @if ($blog->status == 1)
                             <td>Đã duyệt</td>
+                            @else
+                            <td>Chưa duyệt</td>
+                            @endif
+
                             <td>
                                 <div class="d-flex justify-content-between">
                                     <a href="admin.blog.create">
@@ -38,6 +45,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

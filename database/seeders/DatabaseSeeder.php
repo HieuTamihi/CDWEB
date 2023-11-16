@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             JobPostingSeeder::class,
             CustomerSeeder::class,
+            CV_mananementSeeder::class,
         ]);
     }
 }
