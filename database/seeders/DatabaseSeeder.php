@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             JobPostingSeeder::class,
             CustomerSeeder::class,
             CV_mananementSeeder::class,
+            EmployerSeeder::class,
         ]);
     }
 }

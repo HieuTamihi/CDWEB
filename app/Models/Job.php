@@ -28,4 +28,9 @@ class Job extends Model
         $jobs = Job::orderBy('job_posting.id', 'desc')->paginate(12);
         return $jobs;
     }
+
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
 }

@@ -37,14 +37,14 @@ Route::get('/login', function () {
 // Route::resource('job', JobController::class, 'indexadmin' );
 Route::resource('admin.job', 'JobController::class');
 Route::get('/admin.job.index', [JobController::class, 'indexadmin']);
-Route::post('/admin.blog.edit/{job}', [JobController::class, 'edit']);
-
+Route::post('/admin.job.edit/{job}', [JobController::class, 'edit']);
+Route::delete('/admin.job.index/{job}', [JobController::class, 'destroy']);
 
 
 
 //employer
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);
-
+Route::delete('/admin.employer.index/{id}', [EmployerController::class, 'destroy']);
 
 //user
 Route::get('/admin.user.index', [UserController::class, 'indexadmin']);

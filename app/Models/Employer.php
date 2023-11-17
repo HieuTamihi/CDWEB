@@ -30,4 +30,8 @@ class Employer extends Model
         $employers = Employer::orderBy('employer.id', 'desc')->paginate(12);
         return $employers;
     }
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }
