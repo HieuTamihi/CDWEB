@@ -13,6 +13,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Tên công ty</th>
                             <th>Tên công việc</th>
                             <th>Kinh nghiệm</th>
                             <th>Cấp bậc</th>
@@ -26,6 +27,8 @@
                         @foreach ($jobs as $job)
                             <tr>
                                 <td>{{ $job->id }}</td>
+
+                                 <td>{{ $job->name_company }}</td>
                                 <td>{{ $job->title }}</td>
                                 <td>{{ $job->experience }}</td>
                                 <td>{{ $job->type }}</td>
@@ -39,9 +42,9 @@
                                         <a href="admin.job.edit">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="admin.job.index/{{ $job->id }}" data-id="{{ $job->id}}"data-method="delete" data-confirm="Bạn có chắc chắn muốn xóa?">
                                             <i class="fa-solid fa-trash"></i>
-                                        </a>
+                                          </a>
                                     </div>
                                 </td>
                             </tr>

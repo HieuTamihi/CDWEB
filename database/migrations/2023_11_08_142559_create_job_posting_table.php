@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('job_posting', function (Blueprint $table) {
             $table->id();
-            $table->integer('employer_id')->unique();
+            $table->integer('employer_id');
             $table->string('title');
             $table->string('experience');
             $table->string('type');
