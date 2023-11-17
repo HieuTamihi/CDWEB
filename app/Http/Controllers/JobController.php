@@ -20,8 +20,7 @@ class JobController extends Controller
     }
     public function index()
     {
-        $jobNew = $this->job->getJobNew();
-        return view('users.job.index', compact('jobNew'));
+        
     }
 
     public function indexadmin()

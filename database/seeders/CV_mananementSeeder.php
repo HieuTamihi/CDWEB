@@ -18,7 +18,6 @@ class CV_mananementSeeder extends Seeder
                 'CV_id' => 1,
                 'name' => 'Thanh Dien',
                 'status' => 'đã duyệt',
-                
             ],
 
         ]);

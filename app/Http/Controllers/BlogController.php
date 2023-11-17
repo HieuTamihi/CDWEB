@@ -75,7 +75,6 @@ class BlogController extends Controller
     public function destroy(Request $request, Blog $blog)
     {
         $blog->delete();
-
         return redirect()->route('blogs.indexadmin')->with('success', 'Blog post deleted successfully.');
     }
 }

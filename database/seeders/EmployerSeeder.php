@@ -33,6 +33,9 @@ class EmployerSeeder extends Seeder
                 'image' => 'TopDev-Screenshot2022-07-25152515-1658737564.png',
                 'email' => null,
                 'phone_number' => '1800 588 889',
+                'featured' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'User_id' => 4,
@@ -59,6 +62,9 @@ class EmployerSeeder extends Seeder
                 'image' => '1559822688581-Untitled.jpg',
                 'email' => null,
                 'phone_number' => '028 3933 6666',
+                'featured' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'User_id' => 5,
@@ -77,6 +83,9 @@ class EmployerSeeder extends Seeder
                 'image' => 'TopDev-[removal.ai]_tmp-643d0d4737a99-1681722803.png',
                 'email' => null,
                 'phone_number' => '02871096185',
+                'featured' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'User_id' => 6,
@@ -107,6 +116,9 @@ class EmployerSeeder extends Seeder
                 'image' => 'TopDev-Viettel-Logo-Original-1675389520.png',
                 'email' => null,
                 'phone_number' => '1800 8098',
+                'featured' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

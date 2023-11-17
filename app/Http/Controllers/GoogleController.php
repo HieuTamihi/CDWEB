@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employer;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,9 +11,19 @@ use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
 {
+    private $employer;
+    private $job;
+    public function __construct()
+    {
+        $this->employer = new Employer();
+        $this->job = new Job();
+    }
     public function index()
     {
-        return view('index');
+        $employerFeatured = $this->employer->getEmployerFeatured();
+        $jobNew = $this->job->getJobNew();
+        $employerNew = $this->employer->getEmployerNew();
+        return view('index', compact('employerFeatured', 'jobNew', 'employerNew'));
     }
     public function redirectToGoogle()
     {

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('email')->nullable();
             $table->string('phone_number');
+            $table->integer('featured')->nullable();
             $table->timestamps();
         });
     }
