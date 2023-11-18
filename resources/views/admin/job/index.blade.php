@@ -38,7 +38,7 @@
                                         <a href="admin.job.create">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>
-                                        <a href="admin.job.edit.{{$job->stt}}">
+                                        <a href="admin.job.edit/{{$job->stt}}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         <a href="admin.job.index/{{ $job->id }}" data-id="{{ $job->id}}"data-method="delete" data-confirm="Bạn có chắc chắn muốn xóa?">

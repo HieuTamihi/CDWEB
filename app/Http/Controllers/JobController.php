@@ -20,7 +20,6 @@ class JobController extends Controller
     }
     public function index()
     {
-        
     }
 
     public function indexadmin()
@@ -40,7 +39,7 @@ class JobController extends Controller
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
             'title' => 'required|string',
-            'experience' => 'required|integer',
+            'experience' => 'required|string',
             'type' => 'required|string',
             'skills' => 'required|string',
             'required' => 'nullable|string',
@@ -70,9 +69,35 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Job::findOrFail($id);
-
-        return view('admin.job.edit', compact('job'));
+        $employers = employer::all();
+        return view('admin.job.edit', compact('job', 'employers'));
     }
+    public function update(Request $request, Job $job)
+    {
+        $validatedData = $request->validate([
+            'name_company' => 'required|exists:employer,id',
+            'title' => 'required|string',
+            'experience' => 'required|string',
+            'type' => 'required|string',
+            'skills' => 'required|string',
+            'required' => 'nullable|string',
+            'salary' => 'required|string',
+            'status' => 'required|string',
+        ]);
+
+        $employers = employer::all();
+        foreach ($employers as $employer) {
+            if ($employer->id == $validatedData['name_company']) {
+                $job->employer_id = $validatedData['name_company'];
+            } else {
+                return back()->with('error', 'employer not in database');
+            }
+        }
+        $job->update($validatedData);;
+
+        return redirect()->route('admin.job.index')->with('success', 'Job updated successfully.');
+    }
+
     public function destroy($id)
     {
         $job = Job::find($id);
