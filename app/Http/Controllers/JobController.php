@@ -114,7 +114,11 @@ class JobController extends Controller
         $job->skills = $validatedData['skills'];
         $job->required = $validatedData['required'];
         $job->salary = $validatedData['salary'];
-        $job->status = $validatedData['status'];
+        if ($validatedData['status'] != '1' && $validatedData['status'] != '2') {
+            return back()->with('error', 'status not in database');
+        } else {
+            $job->status = $validatedData['status'];
+        }
         try {
             $job->update();
         } catch (\Exception $exception) {
