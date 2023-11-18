@@ -64,11 +64,13 @@
           <div class="form-group">
             <label for="status">Trạng thái</label>
             <select name="status" id="status" class="form-control">
-                @if($job->status == 'active')
-
-                @endif
-                    <option value="1">Đã duyệt</option>
+                @if($job->status == '1')
+                <option value="1">Đã duyệt</option>
+                <option value="2">Chưa duyệt</option>
+                @else
                     <option value="2">Chưa duyệt</option>
+                    <option value="1">Đã duyệt</option>
+                @endif
             </select>
         </div>
 

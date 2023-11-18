@@ -43,10 +43,9 @@ class JobController extends Controller
             'type' => 'required|string',
             'skills' => 'required|string',
             'required' => 'nullable|string',
-            'salary' => 'required|integer',
+            'salary' => 'required|string',
             'status' => 'required|string',
         ]);
-
         $job = new Job;
         $employers = employer::all();
         foreach ($employers as $employer) {
