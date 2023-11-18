@@ -29,17 +29,15 @@ class CV extends Model
     ];
     public function addCV($data)
     {
-        // Lưu ảnh vào thư mục public/images/cv
-        $imagePath = $data['avatar']->store('cv', 'public');
-
-        // Lấy tên ảnh để lưu vào cột image trong cơ sở dữ liệu
-        $imageName = $data['avatar']->hashName();
+        $avatar = $data['avatar'];
+        $filenameWithExtension = $avatar->getClientOriginalName();
+        $avatar->move('images/cv', $filenameWithExtension);
         $dataCV = [
             'customer_id' => Auth::user()->id,
             'Name_CV' => $data['Name_CV'],
             'full_name' => $data['full_name'],
             'gender' => $data['gender'],
-            'avatar' => $imageName,
+            'avatar' => $filenameWithExtension,
             'apply_position' => $data['apply_position'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],

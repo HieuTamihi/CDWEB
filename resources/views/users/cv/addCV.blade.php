@@ -61,8 +61,8 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label w-50 font-weight-bold">Avatar:</label>
-                        <input type="file" name="avatar" accept="image/*">
+                        <label class="form-label w-50 font-weight-bold required-input">Avatar:</label>
+                        <input type="file" name="avatar" accept="image/*" required>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">

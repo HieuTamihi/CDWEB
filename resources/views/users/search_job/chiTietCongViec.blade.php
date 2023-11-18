@@ -6,10 +6,12 @@
             <div class="col-md-7">
                 <div class="d-flex">
                     <div class="">
-                        <img src="{{ asset('images/company/acb.png') }}" alt="" class="w-100">
+                        @if ($detailJob->image !== null)
+                            <img src="{{ asset('images/company/' . $detailJob->image) }}" alt="" class="w-100">
+                        @endif
                     </div>
                     <div class="info">
-                        <h5 class="text-lg font-bold">{{$detailJob->name_company}}</h5>
+                        <h5 class="text-lg font-bold">{{ $detailJob->name_company }}</h5>
                         <a href="#" class="btn btn-danger px-5">
                             <div class="d-flex align-items-center">
                                 <svg class="mr-2" stroke="currentColor" fill="none" stroke-width="1.5"
@@ -27,7 +29,7 @@
                 <div class="py-3 border">
                     <p class="font-weight-bold">Phúc lợi</p>
                     <p>
-                        {{$detailJob->Welfare}}
+                        {{ $detailJob->Welfare }}
                     </p>
                 </div>
                 {{-- <div class="py-3">
@@ -60,18 +62,18 @@
                 <div class="">
                     <h5 class="text-base font-bold lg:text-lg">Thông tin công ty</h5>
                     <div class="">
-                        {{$detailJob->Infor}}
+                        {{ $detailJob->Infor }}
                     </div>
                 </div>
                 <div class="">
                     <h5 class="text-base font-bold lg:text-lg">Thông tin liên hệ</h5>
                     <div class="">
                         <p>website:</p>
-                        <p>{{$detailJob->Website}}</p>
+                        <p>{{ $detailJob->Website }}</p>
                     </div>
                     <div class="">
                         <p>Địa chỉ công ty:</p>
-                        <p>{{$detailJob->address}}</p>
+                        <p>{{ $detailJob->address }}</p>
                     </div>
                 </div>
             </div>

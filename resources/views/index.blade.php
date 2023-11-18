@@ -107,10 +107,14 @@
                     <div class="col-md-3">
                         <div class="info-job p-1">
                             <div class="w-50">
-                                <img src="{{ asset('images/company/' . $employ_new->image) }}" alt=""
-                                    class="w-100">
+                                <a href="{{ route('getDetailJob', $employ_new->idEmploy) }}">
+                                    <img src="{{ asset('images/company/' . $employ_new->image) }}" alt=""
+                                        class="w-100">
+                                </a>
                             </div>
-                            <p class="m-0 text-xs">{{ $employ_new->title }}</p>
+                            <a href="{{ route('getDetailJob', $employ_new->idEmploy) }}">
+                                <p class="m-0 text-xs">{{ $employ_new->title }}</p>
+                            </a>
                             <a href="{{ asset('login') }}" class="text-danger text-xs">Đăng nhập để xem mức lương</a>
                             <p class="m-0">{{ $item_feature->formattedUpdateTime }}</p>
                         </div>
