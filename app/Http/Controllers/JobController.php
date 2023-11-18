@@ -7,6 +7,8 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function Laravel\Prompts\alert;
+
 class JobController extends Controller
 {
     /**
@@ -72,7 +74,7 @@ class JobController extends Controller
     }
     public function update(Request $request, Job $job)
     {
-        var_dump($job->id);
+        alert($job->id);
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
             'title' => 'required|string',
@@ -97,7 +99,7 @@ class JobController extends Controller
         $job->required = $validatedData['required'];
         $job->salary = $validatedData['salary'];
         $job->status = $validatedData['status'];
-        $job->updateOrInsert();
+        $job->update();
 
         return redirect()->route('admin.job.index')->with('success', 'Job updated successfully.');
     }

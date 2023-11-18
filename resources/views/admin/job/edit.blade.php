@@ -5,8 +5,9 @@
         <h2>Sửa công việc</h2>
       </div>
       <div class="card-body">
-        <form action="{{ route('admin.job.index', $job->stt) }}" method="POST">
+        <form action="{{ route('admin.job.update', $job->id) }}" method="POST">
           @csrf
+          @method('PUT')
           <div class="form-group">
             <label for="id">ID</label>
             <input type="number" name="id" id="id" class="form-control" value="{{ $job->id }}" readonly>
