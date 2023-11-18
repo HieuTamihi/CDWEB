@@ -19,8 +19,8 @@
           <div class="form-group">
             <label for="status">Status</label>
             <select name="status" id="status" class="form-control">
-              <option value="1" {{ $blog->status == 1 ? 'selected' : '' }}>Published</option>
-              <option value="2" {{ $blog->status == 2 ? 'selected' : '' }}>Draft</option>
+              <option value="1" {{ $blog->status == 1 ? 'selected' : '' }}>đã duyệt</option>
+              <option value="2" {{ $blog->status == 2 ? 'selected' : '' }}>Chưa duyệt</option>
             </select>
           </div>
 

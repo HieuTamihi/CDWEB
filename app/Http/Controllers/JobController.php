@@ -41,7 +41,7 @@ class JobController extends Controller
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
             'title' => 'required|string',
-            'experience' => 'required|string',
+            'experience' => 'required|string|max:255',
             'type' => 'required|string',
             'skills' => 'required|string',
             'required' => 'nullable|string',
@@ -63,7 +63,12 @@ class JobController extends Controller
         $job->required = $validatedData['required'];
         $job->salary = $validatedData['salary'];
         $job->status = $validatedData['status'];
-        $job->save();
+        try {
+            $job->save();
+        } catch (\Exception $exception) {
+            // Handle database exceptions appropriately
+            return back()->with('error', 'An error occurred while creating the job: ' . $exception->getMessage());
+        }
         return redirect()->route('admin.job.index')->with('success', 'Công việc đã được tạo thành công!');
     }
     public function edit($id)
@@ -77,7 +82,7 @@ class JobController extends Controller
         alert($job->id);
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
-            'title' => 'required|string',
+            'title' => 'required|string|max:250',
             'experience' => 'required|string',
             'type' => 'required|string',
             'skills' => 'required|string',
@@ -99,8 +104,12 @@ class JobController extends Controller
         $job->required = $validatedData['required'];
         $job->salary = $validatedData['salary'];
         $job->status = $validatedData['status'];
-        $job->update();
-
+        try {
+            $job->update();
+        } catch (\Exception $exception) {
+            // Handle database exceptions appropriately
+            return back()->with('error', 'An error occurred while creating the job: ' . $exception->getMessage());
+        }
         return redirect()->route('admin.job.index')->with('success', 'Job updated successfully.');
     }
 
