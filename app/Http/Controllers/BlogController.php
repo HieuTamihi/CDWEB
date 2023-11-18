@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -32,17 +33,35 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'status' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,bmp',
+            'content' => 'required',
+        ]);
+
+        if (!$validatedData) {
+            return redirect()->back()->withErrors('loi');
+        }
+
+        $image = $request->file('image');
+        $filename = time() . '-' . $image->getClientOriginalName();
+        $image->move(public_path('images/blog'), $filename);
+
+        $blog = new Blog;
+        $blog->title = $request->get('title');
+        $blog->status = $request->get('status');
+        $blog->image = $filename;
+        $blog->content = $request->get('content');
+        $blog->save();
+
+        return redirect('/admin.blog.index');
+    }
+    public function create()
+    {
+        return view('admin.blog.create');
     }
 
     /**
@@ -56,25 +75,54 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $blog = blog::findOrFail($id);
+
+        return view('admin.blog.edit', compact('blog'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Get the blog post
+        $blog = Blog::find($id);
+
+        // Get the form data
+        $title = $request->input('title');
+        $status = $request->input('status');
+        $image = $request->file('image');
+        $content = $request->input('content');
+
+        // Update the blog post
+        $blog->title = $title;
+        $blog->status = $status;
+        if ($image) {
+            $filename = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('images/blog'), $filename);
+            $blog->image = $filename;
+        }
+        $blog->content = $content;
+        $blog->save();
+
+        // Redirect to the blog index page
+        return redirect('/admin.blog.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Blog $blog)
+    public function destroy($id)
     {
-        $blog->delete();
-        return redirect()->route('blogs.indexadmin')->with('success', 'Blog post deleted successfully.');
+        $blog = Blog::findOrFail($id);
+        if ($blog) {
+            $blog->delete();
+
+            return redirect()->route('admin.blog.index');
+        } else {
+            return redirect()->route('admin.blog.index')->with('error', 'Không tìm thấy blog nào ' . $id);
+        }
     }
 }

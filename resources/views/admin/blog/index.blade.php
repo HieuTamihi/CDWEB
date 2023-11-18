@@ -36,12 +36,12 @@
                                     <a href="admin.blog.create">
                                         <i class="fa-solid fa-plus"></i>
                                     </a>
-                                    <a href="admin.blog.edit">
+                                    <a href="admin.blog.edit/{{$blog->id}}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="admin.blog.delete/{{ $blog->id }}"  data-method="delete"  data-id="{{ $blog->id}"     onclick="return confirm('Are you sure to delete?')" >
                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                      </a>
                                 </div>
                             </td>
                         </tr>
