@@ -46,15 +46,14 @@ class JobController extends Controller
             'salary' => 'required|string',
             'status' => 'required|string',
         ]);
-        $job = new Job;
-        $employers = employer::all();
-        foreach ($employers as $employer) {
-            if ($employer->id == $validatedData['name_company']) {
-                $job->employer_id = $validatedData['name_company'];
-            } else {
-                return back()->with('error', 'employer not in database');
-            }
+        $employer = Employer::find($validatedData['name_company']);
+
+        if (!$employer) {
+            return back()->with('error', 'employer not in database');
         }
+
+        $job = new Job;
+        $job->employer_id = $employer->id;
         $job->title = $validatedData['title'];
         $job->experience = $validatedData['experience'];
         $job->type = $validatedData['type'];
@@ -73,6 +72,7 @@ class JobController extends Controller
     }
     public function update(Request $request, Job $job)
     {
+        var_dump($job->id);
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
             'title' => 'required|string',
@@ -83,16 +83,21 @@ class JobController extends Controller
             'salary' => 'required|string',
             'status' => 'required|string',
         ]);
+        $employer = Employer::find($validatedData['name_company']);
 
-        $employers = employer::all();
-        foreach ($employers as $employer) {
-            if ($employer->id == $validatedData['name_company']) {
-                $job->employer_id = $validatedData['name_company'];
-            } else {
-                return back()->with('error', 'employer not in database');
-            }
+        if (!$employer) {
+            return back()->with('error', 'employer not in database');
         }
-        $job->update($validatedData);;
+        $job->employer_id = $employer->id;
+
+        $job->title = $validatedData['title'];
+        $job->experience = $validatedData['experience'];
+        $job->type = $validatedData['type'];
+        $job->skills = $validatedData['skills'];
+        $job->required = $validatedData['required'];
+        $job->salary = $validatedData['salary'];
+        $job->status = $validatedData['status'];
+        $job->updateOrInsert();
 
         return redirect()->route('admin.job.index')->with('success', 'Job updated successfully.');
     }

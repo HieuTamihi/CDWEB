@@ -5,7 +5,7 @@
         <h2>Sửa công việc</h2>
       </div>
       <div class="card-body">
-        <form action="{{ route('admin.job.index', $job->id) }}" method="POST">
+        <form action="{{ route('admin.job.index', $job->stt) }}" method="POST">
           @csrf
           <div class="form-group">
             <label for="id">ID</label>
@@ -74,7 +74,7 @@
             </select>
         </div>
 
-                <button type="submit" class="btn btn-primary">Thêm</button>
+                <button type="submit" class="btn btn-primary">update</button>
             </form>
 
 
