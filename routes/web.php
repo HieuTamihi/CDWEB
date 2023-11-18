@@ -24,7 +24,11 @@ Route::get('/index', [GoogleController::class, 'index'])->name('index');
 //Blog
 Route::resource('blog', BlogController::class);
 Route::get('/admin.blog.index', [BlogController::class, 'indexadmin'])->name('blog.indexadmin');
-Route::get('/admin.blog.destroy/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
+Route::post('/admin.blog.index', [BlogController::class, 'store'])->name('admin.blog.index');
+Route::get('/admin.blog.create', [BlogController::class, 'create']);
+Route::get('/admin.blog.edit/{id}', [BlogController::class, 'edit']);
+Route::put('/admin.blog.update/{job}', [BlogController::class, 'update'])->name('admin.blog.update');
+Route::get('/admin.blog.delete/{blog}', [BlogController::class, 'destroy']);
 Route::get('/login', function () {
     return view('login');
 });
