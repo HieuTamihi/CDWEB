@@ -48,7 +48,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="job-feature border px-3">
                     <h5 class="font-weight-bold" style="font-size: 25px;">Việc làm nổi bật</h5>
                 </div>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
