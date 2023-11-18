@@ -39,7 +39,7 @@
                                 <h2 class="title">
                                     Vui lòng <strong>Đăng nhập</strong> để tiếp tục sử dụng dịch vụ của TopDev
                                 </h2>
-                                <form method="POST" action="https://accounts.topdev.vn/login" autocomplete="off">
+                                <form method="POST" action="#" autocomplete="off">
                                     <input type="hidden" name="_token"
                                         value="iHch9NvYATjIIKzMZrYTJkQ8UPEUMrccFoxdDp7n">
                                     <div class="form-group">
@@ -141,7 +141,7 @@
                             <p class="form-description">
                                 Tạo ngay tài khoản để tuyển dụng các Lập Trình Viên Hàng Đầu trên TopDev
                             </p>
-                            <form method="POST" action="https://accounts.topdev.vn/register" autocomplete="off">
+                            <form method="POST" action="#" autocomplete="off">
                                 <input type="hidden" name="_token"
                                     value="iHch9NvYATjIIKzMZrYTJkQ8UPEUMrccFoxdDp7n">
                                 <p class="common-title">
@@ -153,7 +153,7 @@
                                         class="form-control field-email" placeholder="Nhập email">
                                     <p class="invalid-feedback error-email" role="alert">
                                     </p>
-                                </div>  
+                                </div>
                                 <div class="form-group">
                                     <label class="field-label" for="phone">Số điện thoại</label>
                                     <input name="phone" required="" id="phone" type="text"
