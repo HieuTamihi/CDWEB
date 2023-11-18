@@ -41,7 +41,7 @@
                                         <a href="admin.job.edit/{{$job->stt}}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="admin.job.index/{{ $job->id }}" data-id="{{ $job->id}}"data-method="delete" data-confirm="Bạn có chắc chắn muốn xóa?">
+                                        <a href="admin.job.delete/{{ $job->stt }}"  data-method="delete"  data-id="{{ $job->stt}"     onclick="return confirm('Are you sure to delete?')" >
                                             <i class="fa-solid fa-trash"></i>
                                           </a>
                                     </div>

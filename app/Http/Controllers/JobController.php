@@ -106,8 +106,7 @@ class JobController extends Controller
 
     public function destroy($id)
     {
-        $job = Job::find($id);
-
+        $job = Job::findOrFail($id);
         if ($job) {
             $job->delete();
 

@@ -39,7 +39,7 @@ Route::get('/admin.job.edit/{id}', [JobController::class, 'edit']);
 Route::put('/admin.job.update/{job}', [JobController::class, 'update'])->name('admin.job.update');
 Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.job.index');
 //Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
-Route::delete('/admin.job.index/{job}', [JobController::class, 'destroy']);
+Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 
 //employer
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);
