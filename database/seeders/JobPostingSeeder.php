@@ -64,7 +64,7 @@ class JobPostingSeeder extends Seeder
                 'status' => 1,
             ],
             [
-                'employer_id' => 5,
+                'employer_id' => 1,
                 'title' => 'Python Developer',
                 'experience' => '1 năm, 3 năm',
                 'type' => 'Middle, Senior',
@@ -76,7 +76,7 @@ class JobPostingSeeder extends Seeder
                 'status' => 1,
             ],
             [
-                'employer_id' => 6,
+                'employer_id' => 2,
                 'title' => 'Senior Frontend Developer (ReactJS/NextJS)',
                 'experience' => '3 năm',
                 'type' => ' Middle, Senior',

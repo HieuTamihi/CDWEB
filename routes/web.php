@@ -17,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 //Trang chủ
+Route::get('/', [GoogleController::class, 'index'])->name('index');
 Route::get('/index', [GoogleController::class, 'index'])->name('index');
 
 //Blog
@@ -42,8 +39,6 @@ Route::put("/admin.job.edit.{id}", [JobController::class, "edit"]);
 Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.job.index');
 //Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
 Route::delete('/admin.job.index/{job}', [JobController::class, 'destroy']);
-
-
 
 //employer
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);

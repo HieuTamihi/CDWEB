@@ -87,12 +87,16 @@
                     </ul>
                 </div>
                 <div class="login-post d-flex justify-content-between">
-                    <a href="#" class="pr-3">
-                        <button class="text-white py-2 px-4 bg-dangtuyen border">
-                            <span class="dangtuyen">Đăng tuyển</span>
-                            <span><i class="fa-solid fa-arrow-right"></i></span>
-                        </button>
-                    </a>
+                    @if (Auth::check())
+                        @if (Auth::user()->role === 3 || Auth::user()->role === 1)
+                            <a href="#" class="pr-3">
+                                <button class="text-white py-2 px-4 bg-dangtuyen border">
+                                    <span class="dangtuyen">Đăng tuyển</span>
+                                    <span><i class="fa-solid fa-arrow-right"></i></span>
+                                </button>
+                            </a>
+                        @endif
+                    @endif
                     @if (!Auth::check())
                         @if (Request::path() !== 'login')
                             <a href="{{ asset('/login') }}">
@@ -107,8 +111,8 @@
                         <div class="position-relative">
                             <div
                                 class="text-white d-flex justify-content-center align-items-center py-2 px-2 hover-item-login">
-                                <svg class="mr-1" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                                    class="hidden h-5 w-5 lg:block" height="1em" width="1em"
+                                <svg class="mr-1" stroke="currentColor" fill="currentColor" stroke-width="0"
+                                    viewBox="0 0 24 24" class="hidden h-5 w-5 lg:block" height="1em" width="1em"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill="none" d="M0 0h24v24H0z"></path>
                                     <path

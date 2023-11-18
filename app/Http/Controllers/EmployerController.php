@@ -19,7 +19,7 @@ class EmployerController extends Controller
     public function index()
     {
         $employerNew = $this->employer->getEmployerNew();
-        return view('users.employer.index', compact('employerNew'));
+        return view('users.employer.index', compact('employerNew', 'employerFeatured'));
     }
     public function indexadmin()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,7 +23,14 @@ class Employer extends Model
     ];
     public function getEmployerNew()
     {
-        $employerNew = Employer::orderBy('employer.id', 'desc')->paginate(12);
+        $employerNew = Employer::orderBy('employer.id', 'desc')
+            ->leftJoin('job_posting', 'employer.id', 'job_posting.employer_id')
+            ->paginate(12);
+        $employerNew->each(function ($employer) {
+            $updatedAt = Carbon::parse($employer->updated_at);
+            $timeAgo = $updatedAt->diffForHumans();
+            $employer->formattedUpdateTime = $timeAgo;
+        });
         return $employerNew;
     }
     public function getEmployerAdmin()
@@ -33,5 +41,15 @@ class Employer extends Model
     public function jobs()
     {
         return $this->hasMany(Job::class);
+    }
+    public function getEmployerFeatured()
+    {
+        $employerFeatured = Employer::where('featured', '1')->get();
+        $employerFeatured->each(function ($employer) {
+            $updatedAt = Carbon::parse($employer->updated_at);
+            $timeAgo = $updatedAt->diffForHumans();
+            $employer->formattedUpdateTime = $timeAgo;
+        });
+        return $employerFeatured;
     }
 }

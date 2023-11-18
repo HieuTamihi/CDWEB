@@ -20,7 +20,9 @@ class Job extends Model
     ];
     public function getJobNew()
     {
-        $jobNew = Job::orderBy('job_posting.id', 'desc')->paginate(12);
+        $jobNew = Job::leftJoin('employer', 'employer.id', 'job_posting.employer_id')
+            ->orderBy('job_posting.id', 'desc')
+            ->get();
         return $jobNew;
     }
     public function getJobAdmin()
