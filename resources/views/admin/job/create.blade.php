@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label for="salary">Lương</label>
-                    <input type="text" name="salary" id="salary" class="form-control @error('salary') is-invalid @enderror">
+                    <input type="number" name="salary" id="salary" class="form-control @error('salary') is-invalid @enderror">
                     @error('salary')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror

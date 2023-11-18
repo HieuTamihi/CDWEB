@@ -47,17 +47,17 @@ class JobController extends Controller
     {
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
-            'title' => 'required|string',
+            'title' => 'required|string|max:255',
             'experience' => 'required|string|max:255',
-            'type' => 'required|string',
-            'skills' => 'required|string',
-            'required' => 'nullable|string',
-            'salary' => 'required|string',
+            'type' => 'required|string|max:255',
+            'skills' => 'required|string|max:255',
+            'required' => 'nullable',
+            'salary' => 'required|string|max:255',
             'status' => 'required|string',
         ]);
         $employer = Employer::find($validatedData['name_company']);
 
-        if (!$employer) {
+        if (!$employer->id) {
             return back()->with('error', 'employer not in database');
         }
 
@@ -69,7 +69,11 @@ class JobController extends Controller
         $job->skills = $validatedData['skills'];
         $job->required = $validatedData['required'];
         $job->salary = $validatedData['salary'];
-        $job->status = $validatedData['status'];
+        if ($validatedData['status'] != '1' && $validatedData['status'] != '2') {
+            return back()->with('error', 'status not in database');
+        } else {
+            $job->status = $validatedData['status'];
+        }
         try {
             $job->save();
         } catch (\Exception $exception) {
@@ -90,11 +94,11 @@ class JobController extends Controller
         $validatedData = $request->validate([
             'name_company' => 'required|exists:employer,id',
             'title' => 'required|string|max:250',
-            'experience' => 'required|string',
-            'type' => 'required|string',
-            'skills' => 'required|string',
-            'required' => 'nullable|string',
-            'salary' => 'required|string',
+            'experience' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'skills' => 'required|string|max:255',
+            'required' => 'nullable',
+            'salary' => 'required|string|max:255',
             'status' => 'required|string',
         ]);
         $employer = Employer::find($validatedData['name_company']);
@@ -110,7 +114,11 @@ class JobController extends Controller
         $job->skills = $validatedData['skills'];
         $job->required = $validatedData['required'];
         $job->salary = $validatedData['salary'];
-        $job->status = $validatedData['status'];
+        if ($validatedData['status'] != '1' && $validatedData['status'] != '2') {
+            return back()->with('error', 'status not in database');
+        } else {
+            $job->status = $validatedData['status'];
+        }
         try {
             $job->update();
         } catch (\Exception $exception) {
