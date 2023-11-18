@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="container">
+    {{-- <div class="container">
         <div class="py-2">
             <div class="swiper4 p-3">
                 <div class="swiper-wrapper">
@@ -284,7 +284,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 </div>
 </div>
 
