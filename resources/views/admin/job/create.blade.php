@@ -5,23 +5,75 @@
             <h2>Thêm công việc</h2>
         </div>
         <div class="card-body">
-            <form action="" method="POST">
-                <label for="">Tiêu đề</label><br>
-                <input value="" type="text" name="title" id="" class="form-control">
-                <label for="">Tên công việc</label><br>
-                <input value="" type="text" name="name" class="form-control">
-                <label for="">Kinh nghiệm</label><br>
-                <input value="" type="text" name="exp" id="" class="form-control">
-                <label for="">Cấp bậc</label><br>
-                <input value="" type="text" name="level" class="form-control">
-                <label for="">Kĩ năng</label><br>
-                <input value="" type="text" name="skills" id="" class="form-control">
-                <label for="">Lương</label><br>
-                <input value="" type="text" name="content" class="form-control">
-                <button type="submit" class="btn btn-primary m-3 float-right">Save</button>
+            <form action="{{ route('admin.job.index') }}" method="POST">
+                @csrf
+
+                <div class="form-group">
+                    <label for="title">Tiêu đề</label>
+                    <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror">
+                    @error('title')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="name_company">Tên công ty</label>
+                    <select name="name_company" id="name_company" class="form-control">
+                        @foreach ($employers as $employer)
+                            <option value="{{ $employer->id }}">{{ $employer->name_company }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="experience">Kinh nghiệm</label>
+                    <input type="number" name="experience" id="experience" class="form-control @error('experience') is-invalid @enderror">
+                    @error('experience')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="type">type</label>
+                    <input type="text" name="type" id="type" class="form-control @error('type') is-invalid @enderror">
+                    @error('type')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Kỹ năng</label>
+                    <input type="text" name="skills" id="skills" class="form-control @error('skills') is-invalid @enderror">
+                    @error('skills')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="required">Yêu cầu</label>
+                    <textarea name="required" id="required" class="form-control @error('required') is-invalid @enderror"></textarea>
+                    @error('required')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="salary">Lương</label>
+                    <input type="number" name="salary" id="salary" class="form-control @error('salary') is-invalid @enderror">
+                    @error('salary')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="status">Trạng thái</label>
+                    <select name="status" id="status" class="form-control">
+                            <option value="1">Đã duyệt</option>
+                            <option value="2">Chưa duyệt</option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Thêm</button>
             </form>
-        </div>
-    </div>
 
 
     <x-footer-admin></x-footer-admin>

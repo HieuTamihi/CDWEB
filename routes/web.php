@@ -37,7 +37,10 @@ Route::get('/login', function () {
 // Route::resource('job', JobController::class, 'indexadmin' );
 Route::resource('admin.job', 'JobController::class');
 Route::get('/admin.job.index', [JobController::class, 'indexadmin']);
-Route::post('/admin.job.edit/{job}', [JobController::class, 'edit']);
+Route::get('/admin.job.create', [JobController::class, 'create']);
+Route::put("/admin.job.edit.{id}", [JobController::class, "edit"]);
+Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.job.index');
+//Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
 Route::delete('/admin.job.index/{job}', [JobController::class, 'destroy']);
 
 

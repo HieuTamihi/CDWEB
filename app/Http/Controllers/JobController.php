@@ -26,17 +26,53 @@ class JobController extends Controller
 
     public function indexadmin()
     {
-        $jobs = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')->get();
+        $jobs = Job::select('*', 'job_posting.id as stt')->leftJoin('employer', 'job_posting.employer_id', 'employer.id')->get();
 
         return view('admin.job.index', compact('jobs'));
     }
     public function create()
     {
+        $employers = Employer::all();
+        return view('admin.job.create', compact('employers'));
     }
-    public function edit(string $id)
+
+    public function store(Request $request)
     {
-        //
-        return view('admin.blog.edit', compact('job'));
+        $validatedData = $request->validate([
+            'name_company' => 'required|exists:employer,id',
+            'title' => 'required|string',
+            'experience' => 'required|integer',
+            'type' => 'required|string',
+            'skills' => 'required|string',
+            'required' => 'nullable|string',
+            'salary' => 'required|integer',
+            'status' => 'required|string',
+        ]);
+
+        $job = new Job;
+        $employers = employer::all();
+        foreach ($employers as $employer) {
+            if ($employer->id == $validatedData['name_company']) {
+                $job->employer_id = $validatedData['name_company'];
+            } else {
+                return back()->with('error', 'employer not in database');
+            }
+        }
+        $job->title = $validatedData['title'];
+        $job->experience = $validatedData['experience'];
+        $job->type = $validatedData['type'];
+        $job->skills = $validatedData['skills'];
+        $job->required = $validatedData['required'];
+        $job->salary = $validatedData['salary'];
+        $job->status = $validatedData['status'];
+        $job->save();
+        return redirect()->route('admin.job.index')->with('success', 'Công việc đã được tạo thành công!');
+    }
+    public function edit($id)
+    {
+        $job = Job::findOrFail($id);
+
+        return view('admin.job.edit', compact('job'));
     }
     public function destroy($id)
     {

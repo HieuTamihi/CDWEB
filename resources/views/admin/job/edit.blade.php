@@ -7,7 +7,8 @@
             </div>
             <div class="card-body">
                 {{ csrf_field() }}
-                <form action="" method="POST">
+                @PUT
+                <form action="{{ route('admin.job.update', $job->id) }}" method="POST">
                     <label for="">Tiêu đề</label><br>
                     <input value="{{$job->title}}" type="text" name="title" id="" class="form-control">
                     <label for="">Tên công việc</label><br>
