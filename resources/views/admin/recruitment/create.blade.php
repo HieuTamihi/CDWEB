@@ -5,16 +5,21 @@
             <h2>Thêm hồ sơ ứng tuyển</h2>
         </div>
         <div class="card-body">
-            <form action="" method="POST">
-
+            <form action="{{ route('recruitment.store') }}" method="POST">
+                @csrf
                 <label for="">Họ và tên</label><br>
-                <input value="" type="text" name="title" id="" class="form-control">
+                <input value="" type="text" name="title" id="" class="form-control" required>
                 <label for="">Vị trí ứng tuyển</label><br>
-                <input value="" type="text" name="content" class="form-control">
+                <select name="job_posting_id" class="form-control" required>
+                    @foreach ($listType as $item)
+                        <option value="{{ $item->id }}">
+                            <span>{{ $item->title }}</span>
+                            <span>({{ $item->type }})</span>
+                        </option>
+                    @endforeach
+                </select>
                 <label for="">Email</label><br>
-                <input value="" type="text" name="title" id="" class="form-control">
-                <label for="">Kinh nghiệm làm việc</label><br>
-                <input value="" type="text" name="content" class="form-control">
+                <input value="" type="email" name="title" id="" class="form-control" required>
                 <button type="submit" class="btn btn-primary m-3 float-right">Save</button>
             </form>
         </div>

@@ -14,21 +14,28 @@
                                         <div class="col-md-6 bg-white rounded-lg">
                                             <div class="info-job p-1">
                                                 <div class="w-50">
-                                                    <img src="{{ asset('images/company/' . $item_feature->image) }}"
-                                                        alt="" class="w-100">
+                                                    <a href="{{ route('getDetailJob', $item_feature->id) }}">
+                                                        <img src="{{ asset('images/company/' . $item_feature->image) }}"
+                                                            alt="" class="w-100">
+                                                    </a>
                                                 </div>
-                                                <p class="m-0 text-xs">{{ $item_feature->name_company }}</p>
+                                                <a href="#" class="nav-link p-0 text-dark">
+                                                    <p class="m-0 text-xs">{{ $item_feature->name_company }}</p>
+                                                </a>
                                                 <a href="{{ asset('login') }}" class="text-danger text-xs">Đăng nhập để
                                                     xem mức
                                                     lương</a>
-                                                <p class="m-0">{{$item_feature->formattedUpdateTime}}</p>
+                                                <p class="m-0">{{ $item_feature->formattedUpdateTime }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="name-company">
-                                                <h5 class="cut-content">{{ $item_feature->Infor }}</h5>
-                                                <p class="m-0">{{ $item_feature->name_company }}</p>
-                                            </div>
+                                            <a href="{{ route('getDetailJob', $item_feature->id) }}"
+                                                class="nav-link text-dark p-0">
+                                                <div class="name-company">
+                                                    <h5 class="cut-content">{{ $item_feature->Infor }}</h5>
+                                                    <p class="m-0">{{ $item_feature->name_company }}</p>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +112,7 @@
                             </div>
                             <p class="m-0 text-xs">{{ $employ_new->title }}</p>
                             <a href="{{ asset('login') }}" class="text-danger text-xs">Đăng nhập để xem mức lương</a>
-                            <p class="m-0">{{$item_feature->formattedUpdateTime}}</p>
+                            <p class="m-0">{{ $item_feature->formattedUpdateTime }}</p>
                         </div>
                     </div>
                 @endforeach

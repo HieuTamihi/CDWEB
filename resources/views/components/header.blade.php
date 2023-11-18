@@ -73,13 +73,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item p-2">
-                            <a class="nav-link text-white" href="{{ asset('search_job.jobs') }}">Việc làm IT</a>
+                            <a class="nav-link text-white" href="{{ route('job.index') }}">Việc làm IT</a>
                         </li>
                         <li class="nav-item p-2">
-                            <a class="nav-link text-white" href="{{ asset('cv.addCV') }}">Tạo CV</a>
-                        </li>
-                        <li class="nav-item p-2">
-                            <a class="nav-link text-white" href="#">Việc làm IT Fresher</a>
+                            @if (Auth::check())
+                                @if (Auth::user()->role == 2 || Auth::user()->role == 1)
+                                    <a class="nav-link text-white" href="{{ route('cv.create') }}">Tạo CV</a>
+                                @endif
+                            @elseif(!Auth::check())
+                                <a class="nav-link text-white" href="{{ asset('login') }}">Tạo CV</a>
+                            @endif
                         </li>
                         <li class="nav-item p-2">
                             <a class="nav-link text-white" href="{{ route('blog.index') }}">Blog IT</a>
@@ -149,7 +152,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-link p-0 py-2 px-2">
-                                    <a title="Bảng điều khiển" class="text-dark nav-link p-0" href="#">
+                                    <a title="Bảng điều khiển" class="text-dark nav-link p-0"
+                                        href="{{ route('cv.index') }}">
                                         <span class="mr-2 rounded">
                                             <svg stroke="currentColor" fill="none" stroke-width="2"
                                                 viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em"

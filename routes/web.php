@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\RecruitmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 //Trang chủ
 Route::get('/', [GoogleController::class, 'index'])->name('index');
 Route::get('/index', [GoogleController::class, 'index'])->name('index');
+//Chi tiết
+Route::get('/chiTiet/{id}', [GoogleController::class, 'getDetailJob'])->name('getDetailJob');
 
 //Blog
 Route::resource('blog', BlogController::class);
@@ -57,6 +61,14 @@ Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCall
 //Đăng xuất
 Route::get('/logout', [GoogleController::class, 'logout'])->name('logout');
 
+//CV
+Route::resource('cv', CVController::class);
+
+//Jobs
+Route::resource('job', JobController::class);
+
+//Danh sách ứng tuyển
+Route::resource('recruitment', RecruitmentController::class);
 
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {

@@ -60,4 +60,9 @@ class GoogleController extends Controller
         Auth::logout();
         return redirect('/index');
     }
+    public function getDetailJob($id)
+    {
+        $detailJob = Employer::find($id);
+        return view('users.search_job.chiTietCongViec', compact('detailJob'));
+    }
 }

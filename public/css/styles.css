@@ -49,11 +49,11 @@ header ul li a:hover {
     transition-duration: .3s;
 }
 
-.login-post .option li:hover{
+.login-post .option li:hover {
     background-color: #EFEFEF;
 }
 
-.login-post .option li:hover span{
+.login-post .option li:hover span {
     color: #BF3E28;
 }
 
@@ -1042,8 +1042,9 @@ html {
     font-size: 0.75rem;
 }
 
-.anDangNhap{
+.anDangNhap {
     display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
+/*JOb*/

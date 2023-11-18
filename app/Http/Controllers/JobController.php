@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employer;
 use App\Models\Job;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,12 +23,18 @@ class JobController extends Controller
     }
     public function index()
     {
+        $job = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')->get();
+        $job->each(function ($jobDate) {
+            $updatedAt = Carbon::parse($jobDate->updated_at);
+            $timeAgo = $updatedAt->diffForHumans();
+            $jobDate->formattedUpdateTime = $timeAgo;
+        });
+        return view('users.search_job.jobs', compact('job'));
     }
 
     public function indexadmin()
     {
         $jobs = Job::select('*', 'job_posting.id as stt')->leftJoin('employer', 'job_posting.employer_id', 'employer.id')->get();
-
         return view('admin.job.index', compact('jobs'));
     }
     public function create()
@@ -118,7 +125,6 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
         if ($job) {
             $job->delete();
-
             return redirect()->route('admin.job.index');
         } else {
             return redirect()->route('admin.job.index')->with('error', 'Không tìm thấy công việc nào có ID là ' . $id);

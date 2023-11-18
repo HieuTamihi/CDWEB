@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Recruitment extends Model
 {
     use HasFactory;
-    protected $table = 'CV_mananement';
+    protected $table = 'recruitment';
     protected $fillable = [
-        'employer_id ',
-        'title',
-        'experience',
-        'type',
-        'skills',
-        'required',
-        'salary',
+        'customer_id',
+        'job_posting_id',
+        'CV_id',
+        'Status',
+        'Introduce',
+        'File',
     ];
     public function getJobNew()
     {
@@ -27,5 +26,13 @@ class Recruitment extends Model
     {
         $jobs = Job::orderBy('job_posting.id', 'desc')->paginate(12);
         return $jobs;
+    }
+    public function listRecruitment()
+    {
+        $recruitment = Recruitment::leftJoin('users', 'users.id', 'recruitment.customer_id')
+            ->leftJoin('job_posting', 'job_posting.id', 'recruitment.job_posting_id')
+            ->select('*', 'recruitment.id as idRecruit')
+            ->get();
+        return $recruitment;
     }
 }

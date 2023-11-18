@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('recruitment', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id')->unique();
-            $table->integer('job_posting_id')->unique();
+            $table->integer('customer_id');
+            $table->integer('job_posting_id');
             $table->integer('CV_id');
             $table->integer('Status');
             $table->string('Introduce')->nullable();

@@ -15,33 +15,40 @@
                             <th>Họ và tên</th>
                             <th>Vị trí ứng tuyển</th>
                             <th>Email</th>
-                            <th>Kinh nghiệm làm việc</th>
                             <th>Trạng thái</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>Dev</td>
-                            <td>admin@gmail.com</td>
-                            <td>2 năm</td>
-                            <td>Đã duyệt</td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <a href="admin.recruitment.create">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                    <a href="admin.recruitment.edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($listCrui as $item)
+                            <tr>
+                                <td>{{ $item->idRecruit }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->type }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>
+                                    @if ($item->Status == 1)
+                                        <span>Đã duyệt</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('recruitment.create') }}">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </a>
+                                        <a href="{{ route('recruitment.edit', $item->idRecruit) }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <form action="{{ route('recruitment.destroy', $item->idRecruit) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn p-0 m-0"><i
+                                                    class="fa-solid fa-trash text-primary"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
