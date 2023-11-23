@@ -5,9 +5,7 @@ use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\JobTrackingController;
 use App\Http\Controllers\RecruitmentController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,12 +50,14 @@ Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.jo
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 
 //employer
+Route::resource('employer', EmployerController::class);
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);
-Route::delete('/admin.employer.index/{id}', [EmployerController::class, 'destroy']);
-
+Route::post('/admin.employer.index', [EmployerController::class, 'store'])->name('admin.employer.index');
+Route::get('/admin.employer.create', [EmployerController::class, 'create']);
+Route::get('/admin.employer.edit/{id}', [EmployerController::class, 'edit']);
+Route::put('/admin.employer.update/{job}', [EmployerController::class, 'update'])->name('admin.employer.update');
+Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy']);
 //user
-Route::resource('user', UserController::class);
-Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/admin.user.index', [UserController::class, 'indexadmin']);
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
@@ -67,20 +67,12 @@ Route::get('/logout', [GoogleController::class, 'logout'])->name('logout');
 
 //CV
 Route::resource('cv', CVController::class);
-Route::get('/watchCV/{id}', [CVController::class, 'watchCV'])->name('watchCV');
-//Danh sách CV admin
-Route::get('/listCV', [CVController::class, 'listCV'])->name('listCV');
-Route::get('/deleteCV/{id}', [CVController::class, 'deleteCV'])->name('deleteCV');
-Route::get('/createCV', [CVController::class, 'createCV'])->name('createCV');
-Route::post('/storeCV', [CVController::class, 'storeCV'])->name('storeCV');
+
 //Jobs
 Route::resource('job', JobController::class);
 
 //Danh sách ứng tuyển
 Route::resource('recruitment', RecruitmentController::class);
-
-//Danh sách công việc đang theo dõi
-Route::resource('jobTracking', JobTrackingController::class);
 
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {
