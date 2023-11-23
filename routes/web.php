@@ -52,9 +52,13 @@ Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.jo
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 
 //employer
+Route::resource('employer', EmployerController::class);
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);
-Route::delete('/admin.employer.index/{id}', [EmployerController::class, 'destroy']);
-
+Route::post('/admin.employer.index', [EmployerController::class, 'store'])->name('admin.employer.index');
+Route::get('/admin.employer.create', [EmployerController::class, 'create']);
+Route::get('/admin.employer.edit/{id}', [EmployerController::class, 'edit']);
+Route::put('/admin.employer.update/{job}', [EmployerController::class, 'update'])->name('admin.employer.update');
+Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy']);
 //user
 Route::resource('user', UserController::class);
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
