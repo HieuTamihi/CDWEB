@@ -11,7 +11,7 @@
                     style="color: transparent;">
             </div>
             <div class="px-2">
-                <h3>Thái Minh Hiếu</h3>
+                <h3>{{ $user->name }}</h3>
                 <div class="">
                     <span class="mx-1">{{ $user->email }}</span>
                     <span class="mx-1">{{ $user->phone }}</span>
