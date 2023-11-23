@@ -38,7 +38,7 @@
                         <td class="text-center">{{ $item_cv->updated_at }}</td>
                         <td class="text-center">
                             <div class="option-cv">
-                                <a href="#">
+                                <a href="{{ route('watchCV', $item_cv->id) }}">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a href="#" class="ml-2">
