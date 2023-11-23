@@ -38,16 +38,17 @@
                         <td class="text-center">{{ $item_cv->updated_at }}</td>
                         <td class="text-center">
                             <div class="option-cv">
-                                <a href="#">
+                                <a href="users.cv.seeCV">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <a href="#" class="ml-2">
+                                <a href="{{ route('cv.edit', $item_cv->id) }}" class="ml-2">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a href="#" class="ml-2">
+                                <a href="" class="ml-2">
                                     <i class="fa-solid fa-download"></i>
                                 </a>
-                                <a href="#" class="ml-2">
+                                <a href="users.cv.delete/{{ $item_cv->id }}" data-method="delete"
+                                    data-id="{{ $item_cv->id}" onclick="return confirm('Are you sure to delete?')">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </div>

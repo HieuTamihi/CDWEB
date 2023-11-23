@@ -63,6 +63,8 @@ Route::get('/logout', [GoogleController::class, 'logout'])->name('logout');
 
 //CV
 Route::resource('cv', CVController::class);
+// Route::put('/users.cv.update/{item_cv}', [CVController::class, 'update']);
+Route::get('/users.cv.delete/{cv}', [CVController::class, 'destroy']);
 
 //Jobs
 Route::resource('job', JobController::class);

@@ -159,7 +159,15 @@ return [
         /*
          * Package Service Providers...
          */
+        // 'providers' => [
 
+        //     Barryvdh\DomPDF\ServiceProvider::class,
+        // ],
+
+        // 'aliases' => [
+
+        //     'PDF' => Barryvdh\DomPDF\Facade::class,
+        // ],
         /*
          * Application Service Providers...
          */
@@ -169,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
