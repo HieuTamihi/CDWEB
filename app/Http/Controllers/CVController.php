@@ -26,37 +26,13 @@ class CVController extends Controller
         }
     }
 
-    public function listCV()
-    {
-        if (Auth::check()) {
-            $cv_management = CV::all();
-            return view('admin.cv.index', compact('cv_management'));
-        }
-    }
-
-    public function watchCV(string $id)
-    {
-        if (Auth::check()) {
-            $cv = CV::where('id', $id)->where('customer_id', Auth::user()->id)->first();
-            if ($cv) {
-                return view('users.cv.seeCV', compact('cv'));
-            } else {
-                abort('404');
-            }
-        }
-    }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('users.cv.addCV');
-    }
 
-    public function createCV()
-    {
-        return view('admin.cv.create');
+        return view('users.cv.addCV');
     }
 
     /**
@@ -67,17 +43,8 @@ class CVController extends Controller
         if (Auth::check()) {
             $this->cv->addCV($request->all());
             return redirect()->route('cv.index')->with('msg', ' Tạo CV mới thành công !');
-        } else {
-            return view('login');
         }
-    }
-
-    public function storeCV(Request $request)
-    {
-        if (Auth::check()) {
-            $this->cv->addCV($request->all());
-            return redirect()->route('listCV')->with('success', ' Tạo CV mới thành công !');
-        } else {
+        else{
             return view('login');
         }
     }
@@ -112,16 +79,5 @@ class CVController extends Controller
     public function destroy(CV $cV)
     {
         //
-    }
-    public function deleteCV($id)
-    {
-        $cv = CV::find($id);
-
-        if (!$cv) {
-            return redirect()->route('listCV')->with('error', 'Không tìm thấy CV này!');
-        } else {
-            $cv->delete();
-            return redirect()->route('listCV')->with('success', 'Xóa thành công!');
-        }
     }
 }
