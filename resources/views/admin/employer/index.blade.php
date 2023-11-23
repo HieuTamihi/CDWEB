@@ -22,29 +22,26 @@
                     </thead>
                     <tbody>
                         @foreach ($employers as $employer)
-                            <tr>
-                                <td>{{ $employer->id }}</td>
-                                <td>{{ $employer->name_company }}</td>
-                                <td style= "width: 25%"><img src="images/company/{{ $employer->image }}" alt=""
-                                        style="width : 100%; height : 100%"></td>
-                                <td>{{ $employer->phone_number }}</td>
-                                <td>{{ $employer->address }}</td>
-                                <td>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="admin.employer.create">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </a>
-                                        <a href="admin.employer.edit/{{ $employer->id }}">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
-                                        <a href="admin.employer.delete/{{ $employer->id }}" data-method="delete"
-                                            data-id="{{ $employer->id}"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{ $employer->id }}</td>
+                            <td>{{ $employer->name_company }}</td>
+                            <td style= "width: 25%"><img src="images/employer/{{$employer->Image}}" alt="" style="width : 100%; height : 100%"></td>
+                            <td>{{ $employer->phone_number }}</td>
+                            <td>{{ $employer->address }}</td>
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <a href="admin.employer.create">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a href="admin.employer.edit">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
