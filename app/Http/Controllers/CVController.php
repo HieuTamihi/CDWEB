@@ -121,9 +121,9 @@ class CVController extends Controller
         $cv = cv::findOrFail($id);
         if ($cv) {
             $cv->delete();
-            return redirect()->route('cv');
+            return redirect()->route('cv.index');
         } else {
-            return redirect()->route('cv')->with('error', 'Không tìm thấy cv nào ' . $cv);
+            return redirect()->route('cv.index')->with('error', 'Không tìm thấy cv nào ' . $cv);
         }
     }
 }
