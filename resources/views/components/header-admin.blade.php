@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    {{-- Css --}}
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -83,6 +85,13 @@
                 <a class="nav-link" href="{{ asset('admin.blog.index') }}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Quản lý Blog</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('listCV') }}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Quản lý CV</span>
                 </a>
             </li>
 

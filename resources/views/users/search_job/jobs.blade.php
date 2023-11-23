@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="count-jobs">
-                    <span class="text-danger font-weight-bold" style="font-size: 25px;">{{count($job)}}</span>
+                    <span class="text-danger font-weight-bold" style="font-size: 25px;">{{ count($job) }}</span>
                     <span class="font-weight-bold" style="font-size: 25px;">Việc làm IT</span>
                 </div>
                 @foreach ($job as $item_job)
@@ -42,7 +42,13 @@
                                 </div>
                             </div>
                             <div class="col-md-1">
-                                <i class="fa-regular fa-bookmark" style="font-size: 25px;"></i>
+                                <form action="{{ route('jobTracking.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{ $item_job->idJob }}" name="job_id">
+                                    <button type="submit" class="border-0 bg-white">
+                                        <i class="fa-regular fa-bookmark" style="font-size: 25px;"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
