@@ -93,25 +93,72 @@ class CVController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CV $cV)
+    public function edit($id)
     {
-        //
+        $cv1 = cv::findOrFail($id);
+        return view('users.cv.edit', compact('cv1'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CV $cV)
+    public function update(Request $request, string $id)
     {
-        //
+        // Get the blog post
+        $cv = CV::find($id);
+
+        // Get the form data
+        $Name_CV = $request->input('Name_CV');
+        $full_name = $request->input('full_name');
+        $gender = $request->input('gender');
+        $avatar = $request->file('avatar');
+        $apply_position = $request->input('apply_position');
+        $email = $request->input('email');
+        $phone_number = $request->input('phone_number');
+        $Date = $request->date('Date');
+        $exp_work = $request->input('exp_work');
+        $School_name = $request->input('School_name');
+        $Learn_time = $request->input('Learn_time');
+        $Majors = $request->input('Majors');
+        $infor_order = $request->input('infor_order');
+        // Update the blog post
+        $cv->Name_CV = $Name_CV;
+        $cv->full_name = $full_name;
+        $cv->gender = $gender;
+        $cv->apply_position = $apply_position;
+        $cv->email = $email;
+        $cv->phone_number = $phone_number;
+        $cv->Date = $Date;
+        $cv->exp_work = $exp_work;
+        $cv->School_name = $School_name;
+        $cv->Learn_time = $Learn_time;
+        $cv->Majors = $Majors;
+        $cv->infor_order = $infor_order;
+
+        if ($avatar) {
+            $filename = time() . '-' . $avatar->getClientOriginalName();
+            $avatar->move(public_path('images/cv'), $filename);
+            $cv->image = $filename;
+        }
+
+        $cv->save();
+
+        // Redirect to the blog index page
+        return redirect()->route('cv.index')->with('success','Cap nhat thanh cong CV!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CV $cV)
+    public function destroy($id)
     {
-        //
+        $cv = cv::findOrFail($id);
+        if ($cv) {
+            $cv->delete();
+            return redirect()->route('cv.index');
+        } else {
+            return redirect()->route('cv.index')->with('error', 'Không tìm thấy cv nào ' . $cv);
+        }
     }
     public function deleteCV($id)
     {
