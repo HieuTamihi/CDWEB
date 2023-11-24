@@ -63,6 +63,7 @@ Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy
 Route::resource('user', UserController::class);
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/admin.users.index', [UserController::class, 'indexadmin'])->name('admin.users.index');
+Route::get('/admin.users.create', [UserController::class, 'create'])->name('create');
 
 
 //Đăng nhập bằng google

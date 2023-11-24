@@ -27,6 +27,7 @@ class UserController extends Controller
 
     public function index()
     {
+
     }
 
     /**
@@ -34,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.users.create');
     }
 
     /**
@@ -43,6 +44,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'date' => 'required|date|date_format:Y-m-d',
+            'phone' => 'required|string|size:10'
+        ]);
+
+        if (!$validatedData) {
+            return redirect()->back()->withErrors('loi');
+        }
+        $users = new User();
+        $users->name = $request->get('name');
+        $users->date = $request->get('date');
+        $users->phone = $request->get('phone');
+        $users->save();
+
+        return redirect('/admin.users.index');
     }
 
     /**
