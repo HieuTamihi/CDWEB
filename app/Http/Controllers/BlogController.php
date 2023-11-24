@@ -125,4 +125,13 @@ class BlogController extends Controller
             return redirect()->route('admin.blog.index')->with('error', 'Không tìm thấy blog nào ' . $id);
         }
     }
+    // chi tiet blog
+    public function blogdetail($id)
+    {
+        $blogdetail = Blog::find($id);
+        if(!$blogdetail){
+            return back();
+        }
+        return view('users.blog.detailblog',compact('blogdetail'));
+    }
 }

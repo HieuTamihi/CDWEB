@@ -38,7 +38,7 @@ Route::get('/admin.blog.delete/{blog}', [BlogController::class, 'destroy']);
 Route::get('/login', function () {
     return view('login');
 });
-
+Route::get('/detailblog/{id}', [BlogController::class, 'blogdetail'])->name('detail_blog');
 
 //job
 // Route::resource('job', JobController::class, 'indexadmin' );
