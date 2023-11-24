@@ -237,7 +237,46 @@ header ul li a:hover {
     --color-primary: #dd3f24;
     --color-pink: #feeeec;
 }
-
+/* detail blog*/
+.detail-title {
+    margin: 25px 0 25px 0;
+}
+.detail-image {
+    margin-bottom: 25px;
+    border-radius: 2px;
+}
+h1 {
+    font-size: 2rem;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  main {
+    margin-top: 20px;
+  }
+  
+  article {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    
+  }
 /* Track */
 ::-webkit-scrollbar {
     width: 4px;
