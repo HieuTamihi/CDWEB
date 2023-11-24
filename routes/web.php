@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerController;
@@ -59,18 +60,24 @@ Route::get('/admin.employer.create', [EmployerController::class, 'create']);
 Route::get('/admin.employer.edit/{id}', [EmployerController::class, 'edit']);
 Route::put('/admin.employer.update/{job}', [EmployerController::class, 'update'])->name('admin.employer.update');
 Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy']);
+
 //user
 Route::resource('user', UserController::class);
+
+
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/admin.users.index', [UserController::class, 'indexadmin'])->name('admin.users.index');
 Route::get('/admin.users.create', [UserController::class, 'create'])->name('create');
-
 
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 //Đăng xuất
 Route::get('/logout', [GoogleController::class, 'logout'])->name('logout');
+//login admin
+Route::get('/admin', [adminController::class, 'index']);
+Route::get('/admin/login', [adminController::class, 'loginForm'])->name('admin.login');
+Route::post('/admin/login', [adminController::class, 'login']);
 
 //CV
 Route::resource('cv', CVController::class);
@@ -95,3 +102,5 @@ Route::resource('jobTracking', JobTrackingController::class);
 Route::get('/{name?}', function ($name = "index") {
     return view($name);
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
