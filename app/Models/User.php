@@ -27,6 +27,17 @@ class User extends Authenticatable
         'status'
     ];
 
+    public function getUserNew()
+    {
+        $userNew = User::orderBy('users.id', 'desc')->paginate(12);
+        return $userNew;
+    }
+    public function getUserAdmin()
+    {
+        $users = User::orderBy('users.id', 'desc')->paginate(12);
+        return $users;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

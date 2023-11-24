@@ -104,6 +104,8 @@ class CVController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+
         // Get the blog post
         $cv = CV::find($id);
 
@@ -144,7 +146,7 @@ class CVController extends Controller
         $cv->save();
 
         // Redirect to the blog index page
-        return redirect()->route('cv.index')->with('success','Cap nhat thanh cong CV!');
+        return redirect()->route('cv.index')->with('success', 'Cap nhat thanh cong CV!');
     }
 
     /**

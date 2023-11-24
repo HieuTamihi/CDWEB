@@ -63,6 +63,8 @@ Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy
 Route::resource('user', UserController::class);
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/admin.user.index', [UserController::class, 'indexadmin']);
+
+
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);

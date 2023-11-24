@@ -14,11 +14,9 @@
                 <label for="">Ngày sinh</label><br>
                 <input value="" type="date" name="date" id="" class="form-control">
                 <label for="">Địa chỉ</label><br>
-                <input value="" type="text" name="address" class="form-control">
+                <input value="" type="text" name="address"  class="form-control">
                 <button type="submit" class="btn btn-primary m-3 float-right">Save</button>
             </form>
         </div>
     </div>
-
-
     <x-footer-admin></x-footer-admin>

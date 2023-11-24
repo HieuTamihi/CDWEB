@@ -14,31 +14,32 @@
                             <th>Tên</th>
                             <th>Số điện thoại</th>
                             <th>Ngày sinh</th>
-                            <th>Địa chỉ</th>
                             <th>Tình trạng</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <a href="admin.users.create">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                    <a href="admin.users.edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            @foreach ($users as $user)
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->phone_number }}</td>
+                                <td>{{ $user->Date }}</td>
+                                <td>{{ $user->status }}</td>
+
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="admin.users.create">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </a>
+                                        <a href="admin.users.edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            @endforeach
                         </tr>
                     </tbody>
                 </table>

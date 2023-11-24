@@ -8,11 +8,11 @@
             <form action="" method="POST">
 
                 <label for="">Họ và tên</label><br>
-                <input value="" type="text" name="name" id="" class="form-control">
+                <input value="" type="text" name="name" id="" value="" class="form-control">
                 <label for="">Số điện thoại</label><br>
-                <input value="" type="text" name="phone" class="form-control">
+                <input value="" type="text" name="phone" value="" class="form-control">
                 <label for="">Ngày sinh</label><br>
-                <input value="" type="date" name="date" id="" class="form-control">
+                <input value="" type="date" name="date" value="" id="" class="form-control">
                 <label for="">Địa chỉ</label><br>
                 <input value="" type="text" name="address" class="form-control">
                 <button type="submit" class="btn btn-primary m-3 float-right">Save</button>
