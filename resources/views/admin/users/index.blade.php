@@ -19,13 +19,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            @foreach ($users as $user)
+                        @foreach ($users as $user)
+                            <tr>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->phone_number }}</td>
-                                <td>{{ $user->Date }}</td>
-                                <td>{{ $user->status }}</td>
-
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->date }}</td>
+                                <td>
+                                    @if ($user->status == 1)
+                                        <span class="text-success">Hoạt động</span>
+                                    @elseif($user->status == 2)
+                                        <span class="text-danger">Khóa</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="d-flex justify-content-between">
                                         <a href="admin.users.create">
@@ -39,8 +44,8 @@
                                         </a>
                                     </div>
                                 </td>
-                            @endforeach
-                        </tr>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
