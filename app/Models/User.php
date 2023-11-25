@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
@@ -26,6 +27,17 @@ class User extends Authenticatable
         'role',
         'status'
     ];
+
+    public function getUserNew()
+    {
+        $userNew = User::orderBy('users.id', 'desc')->paginate(12);
+        return $userNew;
+    }
+    public function getUserAdmin()
+    {
+        $users = User::orderBy('users.id', 'desc')->paginate(12);
+        return $users;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,4 +58,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function isAdmin()
+    {
+        return $this->role === 1;
+    }
 }

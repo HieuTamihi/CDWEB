@@ -17,7 +17,16 @@ class jobTracking extends Model
         $jobTracking = jobTracking::where('job_tracking.user_id', Auth::user()->id)
             ->leftJoin('job_posting', 'job_posting.id', 'job_tracking.job_id')
             ->leftJoin('employer', 'employer.id', 'job_posting.employer_id')
-            ->select('*','job_tracking.id as idTracking')
+            ->select('*', 'job_tracking.id as idTracking')
+            ->get();
+        return $jobTracking;
+    }
+    public function getJobTrackingAdmin()
+    {
+        $jobTracking = jobTracking::leftJoin('job_posting', 'job_posting.id', 'job_tracking.job_id')
+            ->leftJoin('employer', 'employer.id', 'job_posting.employer_id')
+            ->leftJoin('users', 'users.id', 'job_tracking.user_id')
+            ->select('*', 'job_tracking.id as idTracking')
             ->get();
         return $jobTracking;
     }
