@@ -27,6 +27,16 @@ class JobTrackingController extends Controller
         }
     }
 
+    public function listJobTracking()
+    {
+        if (Auth::check()) {
+            $jobTracking = $this->jobTracking->getJobTrackingAdmin();
+            return view('admin.job_tracking.theodoi', compact('jobTracking'));
+        } else {
+            abort(404);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      */

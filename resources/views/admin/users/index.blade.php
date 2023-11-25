@@ -4,6 +4,9 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Danh sách users</h1>
+    <a href="admin.users.create" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i>
+    </a>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -33,15 +36,11 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-between">
-                                        <a href="admin.users.create">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </a>
                                         <a href="admin.users.edit/{{ $user->id }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         <a href="admin.users.delete/{{ $user->id }}" data-method="delete"
-                                            data-id="{{ $user->id}"
-                                            onclick="return confirm('Are you sure to delete?')">
+                                            data-id="{{ $user->id}}" onclick="return confirm('Are you sure to delete?')">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </div>

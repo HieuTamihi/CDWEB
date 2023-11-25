@@ -65,10 +65,12 @@ Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy
 Route::resource('user', UserController::class);
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/admin.users.index', [UserController::class, 'indexadmin'])->name('admin.users.index');
-Route::get('/admin.users.create', [UserController::class, 'create'])->name('create');
+Route::get('/admin.users.create', [UserController::class, 'create'])->name('users.create');
 Route::get('/admin.users.delete/{user}', [UserController::class, 'destroy']);
 Route::put('/admin.users.sua/{user}', [UserController::class, 'sua'])->name('admin.users.sua');
-Route::get('/admin.users.edit1/{id}', [UserController::class, 'edit1']);
+Route::get('/admin.users.edit/{id}', [UserController::class, 'edit1'])->name('admin.users.edit');
+Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/admin.users.store', [UserController::class, 'store'])->name('users.store');
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
@@ -97,6 +99,7 @@ Route::resource('recruitment', RecruitmentController::class);
 
 //Danh sách công việc đang theo dõi
 Route::resource('jobTracking', JobTrackingController::class);
+Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking'])->name('listJobTracking');
 
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {

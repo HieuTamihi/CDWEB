@@ -95,6 +95,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('listJobTracking') }}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Công việc theo dõi</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

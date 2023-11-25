@@ -5,7 +5,16 @@
             <h2>Thêm người dùng</h2>
         </div>
         <div class="card-body">
-            <form action="{{route('admin.users.index')}}" method="POST" enctype="multipart/form-data">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{ route('users.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label class="required-input" for="">Email</label><br>
@@ -16,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label class="required-input" for="">Mật khẩu</label><br>
-                    <input value="" type="text" name="password" id="password" class="form-control">
+                    <input value="" type="password" name="password" id="password" class="form-control">
                     @error('password')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror

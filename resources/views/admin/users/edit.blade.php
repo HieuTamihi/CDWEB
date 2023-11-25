@@ -5,28 +5,29 @@
             <h2>Sửa người dùng</h2>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.user.update', $user->id) }}" method="POST">
+            <form action="{{ route('admin.users.sua', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <label for="">Họ và tên</label><br>
-                <input value="" type="text" name="name" id="name" value="{{ $user->name }}" class="form-control">
-                <label for="">Email</label><br>
-                <input value="" type="text" name="email " id="email" value="{{ $user->email }}" class="form-control">
-                <label for="">password</label><br>
-                <input value="" type="password" name="password" id="password" value="{{ $user->password }}" class="form-control">
-                <label for="">Số điện thoại</label><br>
-                <input value="" type="text" name="phone" value="{{ $user->phone }}" class="form-control">
-                <label for="">Ngày sinh</label><br>
-                <input value="" type="date" name="date" value="{{ $user->date }}" id="date" class="form-control">
-                <label for="">role</label><br>
-                <select name="role" id="role" class="form-control">
-                    <option value="1" {{ $user->role == 1 ? 'selected' : '' }}>Nổi bật</option>
-                    <option value="2" {{ $user->role == 2 ? 'selected' : '' }}>không nổi bật</option>
+                <label>Họ và tên</label><br>
+                <input type="text" name="name" value="{{ $user->name }}" class="form-control">
+                <label>Email</label><br>
+                <input type="email" name="email" value="{{ $user->email }}" class="form-control">
+                <label>password</label><br>
+                <input type="password" name="password" value="{{ $user->password }}" class="form-control">
+                <label>Số điện thoại</label><br>
+                <input type="text" name="phone" value="{{ $user->phone }}" class="form-control">
+                <label>Ngày sinh</label><br>
+                <input type="date" name="date" value="{{ $user->date }}" id="date" class="form-control">
+                <label>Phân quyền</label><br>
+                <select name="role" class="form-control">
+                    <option value="1" {{ $user->role == 1 ? 'selected' : '' }}>Admin</option>
+                    <option value="2" {{ $user->role == 2 ? 'selected' : '' }}>Customer</option>
+                    <option value="2" {{ $user->role == 2 ? 'selected' : '' }}>Employer</option>
                 </select>
-                <label for="">status</label><br>
-                <select name="status" id="status" class="form-control">
-                    <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Nổi bật</option>
-                    <option value="2" {{ $user->status == 2 ? 'selected' : '' }}>không nổi bật</option>
+                <label>Tình trạng</label><br>
+                <select name="status" class="form-control">
+                    <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Hoạt động</option>
+                    <option value="2" {{ $user->status == 2 ? 'selected' : '' }}>Khóa</option>
                 </select>
                 <button type="submit" class="btn btn-primary m-3 float-right">Save</button>
             </form>
