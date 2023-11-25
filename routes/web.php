@@ -89,6 +89,9 @@ Route::get('/listCV', [CVController::class, 'listCV'])->name('listCV');
 Route::get('/deleteCV/{id}', [CVController::class, 'deleteCV'])->name('deleteCV');
 Route::get('/createCV', [CVController::class, 'createCV'])->name('createCV');
 Route::post('/storeCV', [CVController::class, 'storeCV'])->name('storeCV');
+Route::get('/editCV/{id}', [CVController::class, 'editCV'])->name('editCV');
+Route::put('/updateCV/{id}', [CVController::class, 'updateCV'])->name('updateCV');
+
 // Route::put('/users.cv.update/{item_cv}', [CVController::class, 'update']);
 Route::get('/users.cv.delete/{cv}', [CVController::class, 'destroy']);
 //Jobs

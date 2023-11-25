@@ -99,13 +99,17 @@ class CVController extends Controller
         return view('users.cv.edit', compact('cv1'));
     }
 
+    public function editCV($id)
+    {
+        $cv1 = cv::findOrFail($id);
+        return view('admin.cv.edit', compact('cv1'));
+    }
+
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-
-
         // Get the blog post
         $cv = CV::find($id);
 
@@ -142,11 +146,58 @@ class CVController extends Controller
             $avatar->move(public_path('images/cv'), $filename);
             $cv->image = $filename;
         }
-
         $cv->save();
-
         // Redirect to the blog index page
         return redirect()->route('cv.index')->with('success', 'Cap nhat thanh cong CV!');
+    }
+
+    public function updateCV(Request $request, string $id)
+    {
+        $cv = CV::find($id);
+        $avatar = $request->file('avatar');
+        if ($cv) {
+            if ($avatar) {
+                $filenameWithExtension = $avatar->getClientOriginalName();
+                $avatar->move('images/cv', $filenameWithExtension);
+
+                $cv->update([
+                    'Name_CV' =>  $request->Name_CV,
+                    'full_name' => $request->full_name,
+                    'gender' => $request->gender,
+                    'apply_position' => $request->apply_position,
+                    'email' => $request->email,
+                    'phone_number' => $request->phone_number,
+                    'Date' => $request->Date,
+                    'exp_work' => $request->exp_work,
+                    'School_name' => $request->School_name,
+                    'Learn_time' => $request->Learn_time,
+                    'Majors' => $request->Majors,
+                    'infor_order' => $request->infor_order,
+                    'avatar' => $filenameWithExtension,
+                ]);
+                // Cập nhật thành công
+                return redirect()->route('listCV')->with('success', 'Cap nhat thanh cong CV!');
+            } else {
+                $cv->update([
+                    'Name_CV' =>  $request->Name_CV,
+                    'full_name' => $request->full_name,
+                    'gender' => $request->gender,
+                    'apply_position' => $request->apply_position,
+                    'email' => $request->email,
+                    'phone_number' => $request->phone_number,
+                    'Date' => $request->Date,
+                    'exp_work' => $request->exp_work,
+                    'School_name' => $request->School_name,
+                    'Learn_time' => $request->Learn_time,
+                    'Majors' => $request->Majors,
+                    'infor_order' => $request->infor_order,
+                ]);
+                // Cập nhật thành công
+                return redirect()->route('listCV')->with('success', 'Cap nhat thanh cong CV!');
+            }
+        } else {
+            return redirect()->route('listCV')->with('danger', 'CV không tồn tại');
+        }
     }
 
     /**

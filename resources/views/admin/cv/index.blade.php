@@ -34,7 +34,7 @@
                                         <a href="#">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <a href="admin.blog.edit/1">
+                                        <a href="{{route('editCV', $item->id)}}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         <a href="{{ route('deleteCV', $item->id) }}" data-method="delete"
