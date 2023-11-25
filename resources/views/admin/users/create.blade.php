@@ -5,7 +5,7 @@
             <h2>Thêm người dùng</h2>
         </div>
         <div class="card-body">
-            <form action="{{route('user.create')}}" method="POST">
+            <form action="{{route('admin.users.index')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label class="required-input" for="">Email</label><br>

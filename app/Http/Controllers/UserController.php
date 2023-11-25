@@ -75,6 +75,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+
         if (Auth::check()) {
             $id = Auth::user()->id;
             $user = User::find($id);
@@ -86,6 +87,38 @@ class UserController extends Controller
         } else {
             abort('404');
         }
+    }
+
+public function edit1(string $id){
+    return view('/admin.users.edit');
+}
+
+
+    public function sua(Request $request, string $id){
+        $user = User::find($id);
+
+        // Get the form data
+        $name = $request->input('name');
+        $email  = $request->input('email ');
+        $password = $request->input('password');
+        $date = $request->input('date');
+        $phone = $request->input('phone');
+        $role  = $request->input('role ');
+        $status = $request->input('status');
+
+
+        // Update the user post
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = $password;
+        $user->date = $date;
+        $user->phone = $phone;
+        $user->role = $role;
+        $user->status = $status;
+        $user->save();
+
+        // Redirect to the user index page
+        return redirect('/admin.users.index');
     }
 
     /**
@@ -119,6 +152,12 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $users = User::findOrFail($id);
+        if ($users) {
+            $users->delete();
+            return redirect()->route('admin.users.index') -> with('success', 'xóa thành công' );
+        } else {
+            return redirect()->route('admin.users.index')->with('error', 'Không tìm thấy user nào ' . $id);
+        }
     }
 }

@@ -36,10 +36,12 @@
                                         <a href="admin.users.create">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>
-                                        <a href="admin.users.edit">
+                                        <a href="admin.users.edit/{{ $user->id }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="admin.users.delete/{{ $user->id }}" data-method="delete"
+                                            data-id="{{ $user->id}"
+                                            onclick="return confirm('Are you sure to delete?')">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </div>

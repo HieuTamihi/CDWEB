@@ -63,12 +63,12 @@ Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy
 
 //user
 Route::resource('user', UserController::class);
-
-
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/admin.users.index', [UserController::class, 'indexadmin'])->name('admin.users.index');
 Route::get('/admin.users.create', [UserController::class, 'create'])->name('create');
-
+Route::get('/admin.users.delete/{user}', [UserController::class, 'destroy']);
+Route::put('/admin.users.sua/{user}', [UserController::class, 'sua'])->name('admin.users.sua');
+Route::get('/admin.users.edit1/{id}', [UserController::class, 'edit1']);
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
