@@ -24,8 +24,8 @@ class JobController extends Controller
     public function index()
     {
         $job = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')
-        ->select('*','job_posting.id as idJob')
-        ->get();
+            ->select('*', 'job_posting.id as idJob')
+            ->get();
         $job->each(function ($jobDate) {
             $updatedAt = Carbon::parse($jobDate->updated_at);
             $timeAgo = $updatedAt->diffForHumans();
@@ -130,6 +130,14 @@ class JobController extends Controller
         return redirect()->route('admin.job.index')->with('success', 'Job updated successfully.');
     }
 
+    public function showJob($id)
+    {
+        $showJob = Job::find($id);
+        if(!$showJob){
+            return back();
+        }
+        return view('users.post-job.chitietvieclam',compact('showJob'));
+    }
     public function destroy($id)
     {
         $job = Job::findOrFail($id);

@@ -8,7 +8,7 @@
             <div class="row">
                 @foreach ($blogNew as $blog_value)
                     <div class="col-md-3">
-                        <a href="{{route('detail_blog',$blog_value->id)}}">
+                        <a href="{{ route('detail_blog', $blog_value->id) }}">
                             <div class="info-job p-1">
                                 <div class="w-50">
                                     <img src="{{ asset('images/blog/' . $blog_value->Image) }}" alt=""
@@ -25,7 +25,6 @@
             {{ $blogNew->appends(request()->except('page'))->links() }}
         </div>
     </div>
-
     {{-- <div class="container">
         <div class="py-2">
             <div class="swiper4 p-3">

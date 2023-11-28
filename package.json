@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "sass": "^1.69.0",
-        "swiper": "^10.3.1"
+        "swiper": "^10.3.1",
+        "typeahead": "^0.2.2"
     }
 }

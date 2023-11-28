@@ -51,6 +51,7 @@ Route::put('/admin.job.update/{job}', [JobController::class, 'update'])->name('a
 Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.job.index');
 //Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
+Route::get('/showJob/{id}', [JobController::class, 'showJob'])->name('showjob');// show job
 
 //employer
 Route::resource('employer', EmployerController::class);
