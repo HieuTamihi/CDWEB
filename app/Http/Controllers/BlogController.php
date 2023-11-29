@@ -136,7 +136,7 @@ class BlogController extends Controller
         return view('users.blog.detailblog',compact('blogdetail'));
     }
 
-    public function search(Request $request)
+    public function searchAdmin(Request $request)
     {
         $keyword = $request->input('keyword');
 
@@ -144,5 +144,14 @@ class BlogController extends Controller
         $blogs = Blog::where('title', 'like', '%' . $keyword . '%')->get();
 
         return view('admin.blog.results', compact('blogs','keyword'));
+    }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $blogNew = Blog::where('title', 'like', '%' . $keyword . '%')->get();
+
+        return view('users.blog.results', compact('blogNew','keyword'));
     }
 }

@@ -1,5 +1,8 @@
 <x-header></x-header>
-
+<form action="{{ route('searchBlog') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
 <div class="container">
 
     <div class="py-2">

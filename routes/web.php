@@ -45,7 +45,8 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/detailblog/{id}', [BlogController::class, 'blogdetail'])->name('detail_blog');
-Route::get('/admin.blog.results', [BlogController::class, 'search'])->name('searchAdminBlog');
+Route::get('/admin.blog.results', [BlogController::class, 'searchAdmin'])->name('searchAdminBlog');
+Route::get('/users.blog.results', [BlogController::class, 'search'])->name('searchBlog');
 
 
 //job
@@ -59,8 +60,8 @@ Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.jo
 //Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 Route::get('/showJob/{id}', [JobController::class, 'showJob'])->name('showjob');// show job
-Route::get('/admin.job.results', [JobController::class, 'search'])->name('searchJobAdmin');
-
+Route::get('/admin.job.results', [JobController::class, 'searchAdmin'])->name('searchJobAdmin');
+Route::get('/users.search_job.results', [JobController::class, 'search'])->name('searchJob');
 
 //employer
 Route::resource('employer', EmployerController::class);
@@ -113,6 +114,7 @@ Route::get('/createCV', [CVController::class, 'createCV'])->name('createCV');
 Route::post('/storeCV', [CVController::class, 'storeCV'])->name('storeCV');
 Route::get('/editCV/{id}', [CVController::class, 'editCV'])->name('editCV');
 Route::put('/updateCV/{id}', [CVController::class, 'updateCV'])->name('updateCV');
+Route::get('/admin.cv.results', [CVController::class, 'search'])->name('searchCVAdmin');
 
 // Route::put('/users.cv.update/{item_cv}', [CVController::class, 'update']);
 Route::get('/users.cv.delete/{cv}', [CVController::class, 'destroy']);
@@ -121,10 +123,12 @@ Route::resource('job', JobController::class);
 
 //Danh sách ứng tuyển
 Route::resource('recruitment', RecruitmentController::class);
+Route::get('/admin.recruitment.results', [RecruitmentController::class, 'searchAdmin'])->name('searchRecruitmentAdmin');
 
 //Danh sách công việc đang theo dõi
 Route::resource('jobTracking', JobTrackingController::class);
 Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking'])->name('listJobTracking');
+Route::get('/admin.job_tracking.results', [JobTrackingController::class, 'search'])->name('searchJob_trackingAdmin');
 
 Route::resource('follower', FollowerController::class);
 

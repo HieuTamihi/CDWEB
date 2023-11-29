@@ -1,6 +1,6 @@
 <x-header-admin></x-header-admin>
 
-<form action="{{ route('search') }}" method="GET">
+<form action="{{ route('searchCVAdmin') }}" method="GET">
     <input type="text" name="keyword" placeholder="Enter keyword">
     <button type="submit">Search</button>
 </form>
@@ -9,7 +9,7 @@
     @if (empty($keyword))
         <p>Không để chuỗi rỗng</p>
     @else
-        @if ($blogs->isEmpty())
+        @if ($cv_management->isEmpty())
             <p>No results found.</p>
         @else
             <div class="card shadow mb-4">
@@ -19,46 +19,33 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Tên bài blog</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Tình trạng</th>
-                                    <th></th>
+                                    <th>Tên CV</th>
+                                    <th>Lần chỉnh sửa cuối</th>
+                                    <th>Tùy chọn</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-
-                                        @foreach ($blogs as $blog)
-                                        <tr>
-                                                <td>{{ $blog->id }}</td>
-                                                <td>{{ $blog->title }}</td>
-                                                <td style="width: 25%"><img src="images/blog/{{ $blog->Image }}"
-                                                        alt="" style="width: 100%; height: 100%"></td>
-
-                                                @if ($blog->status == 1)
-                                                    <td>Đã duyệt</td>
-                                                @else
-                                                    <td>Chưa duyệt</td>
-                                                @endif
-
-                                                <td>
-                                                    <div class="d-flex justify-content-between">
-                                                        <a href="admin.blog.create">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </a>
-                                                        <a href="admin.blog.edit/{{ $blog->id }}">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </a>
-                                                        <a href="admin.blog.delete/{{ $blog->id }}"
-                                                            data-method="delete" data-id="{{ $blog->id }}"
-                                                            onclick="return confirm('Are you sure to delete?')">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-
+                                @foreach ($cv_management as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->Name_CV }}</td>
+                                        <td>{{ $item->updated_at }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="#">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                                <a href="{{route('editCV', $item->id)}}">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                                <a href="{{ route('deleteCV', $item->id) }}" data-method="delete"
+                                                    onclick="return confirm('Are you sure to delete?')">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

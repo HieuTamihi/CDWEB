@@ -1,5 +1,9 @@
 <x-header-admin></x-header-admin>
 <!-- Begin Page Content -->
+<form action="{{ route('searchJob_trackingAdmin') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
 <div class="container-fluid">
 
     <!-- Page Heading -->

@@ -233,10 +233,11 @@ class CVController extends Controller
         $keyword = $request->input('keyword');
 
         // Sử dụng model để tìm kiếm dữ liệu
-        $cvs = CV::where('title', 'like', '%' . $keyword . '%')->get();
+        $cv_management = CV::where('Name_CV', 'like', '%' . $keyword . '%')->get();
 
-        return view('admin.blog.results', compact('cvs','keyword'));
+        return view('admin.cv.results', compact('cv_management','keyword'));
     }
+
 }
 
 

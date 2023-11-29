@@ -119,4 +119,13 @@ class RecruitmentController extends Controller
             return redirect()->route('recruitment.index')->with('success', 'Xóa thành công.');
         }
     }
+    public function searchAdmin(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $listCrui = Recruitment::where('name_company', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.recruitment.results', compact('listCrui','keyword'));
+    }
 }

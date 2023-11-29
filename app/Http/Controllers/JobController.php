@@ -157,10 +157,10 @@ class JobController extends Controller
     public function showJob($id)
     {
         $showJob = Job::find($id);
-        if(!$showJob){
+        if (!$showJob) {
             return back();
         }
-        return view('users.post-job.chitietvieclam',compact('showJob'));
+        return view('users.post-job.chitietvieclam', compact('showJob'));
     }
     public function destroy($id)
     {
@@ -173,13 +173,24 @@ class JobController extends Controller
         }
     }
 
-    public function search(Request $request)
+    public function searchAdmin(Request $request)
     {
         $keyword = $request->input('keyword');
         // Sử dụng model để tìm kiếm dữ liệu
         $jobs = Job::where('title', 'like', '%' . $keyword . '%')->get();
 
-        return view('admin.job.results', compact('jobs','keyword'));
+        return view('admin.job.results', compact('jobs', 'keyword'));
+    }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        // Sử dụng model để tìm kiếm dữ liệu
+        $job = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')
+        ->where('title', 'like','%' . $keyword . '%')
+        ->select('*', 'job_posting.id as idJob')
+        ->get();
+        return view('users.search_job.results', compact('job', 'keyword'));
+    }
 
     // public function sendemail()
     // {
@@ -203,11 +214,11 @@ class JobController extends Controller
     //     }
     //     // foreach ($followers as  $item) {
 
-        //     if ($item->employer_id == $job->employer_id) {
-        //         Mail::send('email.test', (['name' => $employer->name_company]), function ($email) use ($follower) {
-        //             $email->to($item->email, $item->name);
-        //         });
-        //     }
-        // }
-    }
+    //     if ($item->employer_id == $job->employer_id) {
+    //         Mail::send('email.test', (['name' => $employer->name_company]), function ($email) use ($follower) {
+    //             $email->to($item->email, $item->name);
+    //         });
+    //     }
+    // }
+
 }

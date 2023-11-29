@@ -1,5 +1,9 @@
 <x-header-admin>
 </x-header-admin>
+<form action="{{ route('searchCVAdmin') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
