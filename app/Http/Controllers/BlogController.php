@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -133,5 +134,15 @@ class BlogController extends Controller
             return back();
         }
         return view('users.blog.detailblog',compact('blogdetail'));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $blogs = Blog::where('title', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.blog.results', compact('blogs','keyword'));
     }
 }

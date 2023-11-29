@@ -35,13 +35,22 @@
                                     </a>
                                 </div>
                             </div>
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <div id="tab-employer" class="tab-item tab-employer tab-pane">
                                 <h2 class="title">
                                     Vui lòng <strong>Đăng nhập</strong> để tiếp tục sử dụng dịch vụ của TopDev
                                 </h2>
-                                <form method="POST" action="#" autocomplete="off">
-                                    <input type="hidden" name="_token"
-                                        value="iHch9NvYATjIIKzMZrYTJkQ8UPEUMrccFoxdDp7n">
+                                <form  method="POST" action="{{ route('login') }}" autocomplete="off">
+                                    @csrf
+                                    <input type="hidden" name="_token"value="iHch9NvYATjIIKzMZrYTJkQ8UPEUMrccFoxdDp7n">
                                     <div class="form-group">
                                         <label class="form-label" for="username">ID tài khoản</label>
                                         <div class="input-group ">

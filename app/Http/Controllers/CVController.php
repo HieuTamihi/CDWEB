@@ -224,4 +224,14 @@ class CVController extends Controller
             return redirect()->route('listCV')->with('success', 'Xóa thành công!');
         }
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $cvs = CV::where('title', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.blog.results', compact('cvs','keyword'));
+    }
 }

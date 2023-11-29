@@ -148,4 +148,12 @@ class JobController extends Controller
             return redirect()->route('admin.job.index')->with('error', 'Không tìm thấy công việc nào có ID là ' . $id);
         }
     }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        // Sử dụng model để tìm kiếm dữ liệu
+        $jobs = Job::where('title', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.job.results', compact('jobs','keyword'));
+    }
 }

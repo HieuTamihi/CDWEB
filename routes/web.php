@@ -7,8 +7,10 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\JobTrackingController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,7 @@ Route::get('/index', [GoogleController::class, 'index'])->name('index');
 //Chi tiết
 Route::get('/chiTiet/{id}', [GoogleController::class, 'getDetailJob'])->name('getDetailJob');
 
+
 //Blog
 Route::resource('blog', BlogController::class);
 Route::get('/admin.blog.index', [BlogController::class, 'indexadmin'])->name('blog.indexadmin');
@@ -40,6 +43,8 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/detailblog/{id}', [BlogController::class, 'blogdetail'])->name('detail_blog');
+Route::get('/admin.blog.results', [BlogController::class, 'search'])->name('searchAdminBlog');
+
 
 //job
 // Route::resource('job', JobController::class, 'indexadmin' );
@@ -52,6 +57,7 @@ Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.jo
 //Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 Route::get('/showJob/{id}', [JobController::class, 'showJob'])->name('showjob');// show job
+Route::get('/admin.job.results', [JobController::class, 'search'])->name('searchJobAdmin');
 
 //employer
 Route::resource('employer', EmployerController::class);
@@ -61,6 +67,7 @@ Route::get('/admin.employer.create', [EmployerController::class, 'create']);
 Route::get('/admin.employer.edit/{id}', [EmployerController::class, 'edit']);
 Route::put('/admin.employer.update/{job}', [EmployerController::class, 'update'])->name('admin.employer.update');
 Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy']);
+Route::get('/admin.employer.results', [EmployerController::class, 'search'])->name('searchEmployerAdmin');
 
 //user
 Route::resource('user', UserController::class);
@@ -72,6 +79,9 @@ Route::put('/admin.users.sua/{user}', [UserController::class, 'sua'])->name('adm
 Route::get('/admin.users.edit/{id}', [UserController::class, 'edit1'])->name('admin.users.edit');
 Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/admin.users.store', [UserController::class, 'store'])->name('users.store');
+Route::get('/admin.users.results', [UserController::class, 'search'])->name('searchUserAdmin');
+
+
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
@@ -81,6 +91,14 @@ Route::get('/logout', [GoogleController::class, 'logout'])->name('logout');
 Route::get('/admin', [adminController::class, 'index']);
 Route::get('/admin/login', [adminController::class, 'loginForm'])->name('admin.login');
 Route::post('/admin/login', [adminController::class, 'login']);
+
+//login
+// route::get('/login');
+Route::get('/admin/login', [LoginController::class, 'loginForm'])->name('login');
+Route::post('/admin/login', [LoginController::class, 'login']);
+
+
+
 
 //CV
 Route::resource('cv', CVController::class);

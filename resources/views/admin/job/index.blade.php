@@ -1,11 +1,10 @@
 <x-header-admin>
 </x-header-admin>
-{{--datatables--}}
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-{{--datatables--}}
 
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
+<form action="{{ route('searchJobAdmin') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -14,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive " >
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -44,12 +43,14 @@
                                         <a href="admin.job.create">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>
-                                        <a href="admin.job.edit/{{$job->stt}}">
+                                        <a href="admin.job.edit/{{ $job->stt }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="admin.job.delete/{{ $job->stt }}"  data-method="delete"  data-id="{{ $job->stt}"     onclick="return confirm('Are you sure to delete?')" >
+                                        <a href="admin.job.delete/{{ $job->stt }}" data-method="delete"
+                                            data-id="{{ $job->stt }}"
+                                            onclick="return confirm('Are you sure to delete?')">
                                             <i class="fa-solid fa-trash"></i>
-                                          </a>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -82,11 +83,5 @@
 </div>
 <!-- End of Page Wrapper -->
 
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#dataTable').DataTable();
-} );
 
-</script>
 <x-footer-admin></x-footer-admin>
-
