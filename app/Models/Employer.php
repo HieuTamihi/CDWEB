@@ -25,7 +25,7 @@ class Employer extends Model
     {
         $employerNew = Employer::orderBy('employer.id', 'desc')
             ->leftJoin('job_posting', 'employer.id', 'job_posting.employer_id')
-            ->select('*','employer.id as idEmploy')
+            ->select('*', 'employer.id as idEmploy')
             ->paginate(12);
         $employerNew->each(function ($employer) {
             $updatedAt = Carbon::parse($employer->updated_at);

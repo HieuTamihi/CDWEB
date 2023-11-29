@@ -1,9 +1,11 @@
 <?php
 
+use App\Follower;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\JobTrackingController;
@@ -58,6 +60,7 @@ Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.jo
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 Route::get('/showJob/{id}', [JobController::class, 'showJob'])->name('showjob');// show job
 Route::get('/admin.job.results', [JobController::class, 'search'])->name('searchJobAdmin');
+
 
 //employer
 Route::resource('employer', EmployerController::class);
@@ -123,9 +126,13 @@ Route::resource('recruitment', RecruitmentController::class);
 Route::resource('jobTracking', JobTrackingController::class);
 Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking'])->name('listJobTracking');
 
+Route::resource('follower', FollowerController::class);
+
+Route::get('cv/export_pdf', [CVController::class, 'exportPDF'])->name('exportPDF');
+Route::get('/testmail', [JobController::class, 'sendemail']);
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {
     return view($name);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -6,6 +6,8 @@ use App\Http\Requests\ImageRequest;
 use App\Models\CV;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\PDF;
+
 
 class CVController extends Controller
 {
@@ -225,6 +227,7 @@ class CVController extends Controller
         }
     }
 
+
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -235,3 +238,13 @@ class CVController extends Controller
         return view('admin.blog.results', compact('cvs','keyword'));
     }
 }
+
+
+    public function exportPDF($file_cv)
+    {
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->print_order_convert($file_cv));
+        return $pdf->stream();
+    }
+}
+

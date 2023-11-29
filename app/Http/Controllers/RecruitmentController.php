@@ -57,9 +57,16 @@ class RecruitmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Recruitment $cV)
+    public function show($id)
     {
-        //
+        $recruitment = Recruitment::leftJoin('users', 'users.id', 'recruitment.customer_id')
+            ->leftJoin('job_posting', 'job_posting.id', 'recruitment.job_posting_id')
+            ->select('*', 'recruitment.id as idRecruit', 'job_posting.title as position')
+            ->where('recruitment.id', $id)->first();
+
+        $listType = Job::all();
+
+        return view('admin.recruitment.show', compact('recruitment', 'listType'));
     }
 
     /**
@@ -93,7 +100,7 @@ class RecruitmentController extends Controller
                 $user->email = $request->email;
                 $user->save();
             }
-            
+
             return redirect()->route('recruitment.index')->with('success', 'Cập nhật thành công.');
         }
     }

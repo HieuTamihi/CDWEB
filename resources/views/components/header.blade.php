@@ -99,7 +99,7 @@
                         @if (Auth::user()->role === 3 || Auth::user()->role === 1)
                             <a href="#" class="pr-3">
                                 <button class="text-white py-2 px-4 bg-dangtuyen border">
-                                    <span class="dangtuyen">Đăng tuyển</span>
+                                        <span class="dangtuyen">Đăng tuyển</span>
                                     <span><i class="fa-solid fa-arrow-right"></i></span>
                                 </button>
                             </a>
@@ -204,6 +204,23 @@
                                         </span>
                                         <span>
                                             Việc đang theo dõi
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link p-0 py-2 px-2">
+                                    <a title="Bảng điều khiển" class="text-dark nav-link p-0"
+                                        href="{{ route('follower.index') }}">
+                                        <span class="mr-2 rounded">
+                                            <svg stroke="currentColor" fill="none" stroke-width="1.5"
+                                                viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span>
+                                            Công ty đang theo dõi
                                         </span>
                                     </a>
                                 </li>

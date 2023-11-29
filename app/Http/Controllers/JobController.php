@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employer;
+use App\Models\Follower;
 use App\Models\Job;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 use function Laravel\Prompts\alert;
 
@@ -76,13 +80,33 @@ class JobController extends Controller
         } else {
             $job->status = $validatedData['status'];
         }
+
+        $followers = Follower::leftJoin('users', 'users.id', 'followers.user_id')
+            ->leftJoin('employer', 'employer.id', 'followers.employer_id')
+            ->select('followers.id', 'users.email', 'users.name', 'followers.employer_id', 'employer.name_company')
+            ->where('employer.id',  $job->employer_id)
+            ->get();
+
+        foreach ($followers as $follower) {
+            var_dump($follower->email . '-' . $follower->name . '-' . $follower->employer_id);
+            // Process each follower object here
+            if ($follower->employer_id == $job->employer_id) {
+                Mail::send('email.test', (['name' => $follower->name]), function ($email) use ($follower) {
+                    $email->subject('tin công việc' . $follower->name_company);
+                    $email->to($follower->email, $follower->name);
+                });
+            }
+        }
+
         try {
             $job->save();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             // Handle database exceptions appropriately
             return back()->with('error', 'An error occurred while creating the job: ' . $exception->getMessage());
         }
-        return redirect()->route('admin.job.index')->with('success', 'Công việc đã được tạo thành công!');
+        // Handle database exceptions appropriately
+
+        return  redirect()->route('admin.job.index')->with('success', 'Công việc đã được tạo thành công!');
     }
     public function edit($id)
     {
@@ -123,7 +147,7 @@ class JobController extends Controller
         }
         try {
             $job->update();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             // Handle database exceptions appropriately
             return back()->with('error', 'An error occurred while creating the job: ' . $exception->getMessage());
         }
@@ -148,6 +172,7 @@ class JobController extends Controller
             return redirect()->route('admin.job.index')->with('error', 'Không tìm thấy công việc nào có ID là ' . $id);
         }
     }
+
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -155,5 +180,34 @@ class JobController extends Controller
         $jobs = Job::where('title', 'like', '%' . $keyword . '%')->get();
 
         return view('admin.job.results', compact('jobs','keyword'));
+
+    public function sendemail()
+    {
+        $job =  Job::find(11);
+        $employer = Employer::find(1);
+        $followers = Follower::leftJoin('users', 'users.id', 'followers.user_id')
+            ->leftJoin('employer', 'employer.id', 'followers.employer_id')
+            ->select('followers.id', 'users.email', 'users.name', 'followers.employer_id', 'employer.name_company')
+            ->where('employer.id',  $job->employer_id)
+            ->get();
+
+        foreach ($followers as $follower) {
+            var_dump($follower->email . '-' . $follower->name . '-' . $follower->employer_id);
+            // Process each follower object here
+            if ($follower->employer_id == $job->employer_id) {
+                Mail::send('email.test', (['name' => $follower->name]), function ($email) use ($follower) {
+                    $email->subject('tin công việc' . $follower->name_company);
+                    $email->to($follower->email, $follower->name);
+                });
+            }
+        }
+        // foreach ($followers as  $item) {
+
+        //     if ($item->employer_id == $job->employer_id) {
+        //         Mail::send('email.test', (['name' => $employer->name_company]), function ($email) use ($follower) {
+        //             $email->to($item->email, $item->name);
+        //         });
+        //     }
+        // }
     }
 }
