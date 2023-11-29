@@ -33,11 +33,11 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-between">
-                                        <a href="{{ route('recruitment.create') }}">
+                                        {{-- <a href="{{ route('recruitment.create') }}">
                                             <i class="fa-solid fa-plus"></i>
-                                        </a>
-                                        <a href="{{ route('recruitment.edit', $item->idRecruit) }}">
-                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a> --}}
+                                        <a href="{{ route('recruitment.show', $item->idRecruit) }}">
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
                                         <form action="{{ route('recruitment.destroy', $item->idRecruit) }}" method="POST">
                                             @csrf

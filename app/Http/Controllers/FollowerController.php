@@ -6,6 +6,7 @@ use App\Models\Employer;
 use App\Models\Follower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class FollowerController extends Controller
 {
@@ -13,6 +14,16 @@ class FollowerController extends Controller
     public function __construct()
     {
         $this->follower = new Follower();
+    }
+
+    public function index()
+    {
+        if (Auth::check()) {
+            $follower = $this->follower->getFollower();
+            return view('users.follower.theodoi', compact('follower'));
+        } else {
+            abort(404);
+        }
     }
     public function store(Request $request)
     {
@@ -25,6 +36,7 @@ class FollowerController extends Controller
                     ->first();
 
                 if (!$check) {
+
                     $follower = new Follower();
                     $follower->user_id = Auth::user()->id;
                     $follower->employer_id = $request->id;
@@ -39,6 +51,18 @@ class FollowerController extends Controller
             }
         } else {
             abort(404);
+        }
+    }
+
+    public function destroy($id)
+    {
+        $follower = follower::find($id);
+
+        if (!$follower) {
+            return redirect()->route('follower.index')->with('error', 'Không tìm thấy công việc này!');
+        } else {
+            $follower->delete();
+            return redirect()->route('follower.index')->with('success', 'Xóa thành công!');
         }
     }
 }

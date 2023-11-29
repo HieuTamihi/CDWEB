@@ -55,6 +55,7 @@ Route::post('/admin.job.index', [JobController::class, 'store'])->name('admin.jo
 //Route::post('/admin.job', [JobController::class, 'store'])->name('admin.job.store');
 Route::get('/admin.job.delete/{job}', [JobController::class, 'destroy']);
 
+
 //employer
 Route::resource('employer', EmployerController::class);
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);
@@ -110,10 +111,10 @@ Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking
 Route::resource('follower', FollowerController::class);
 
 Route::get('cv/export_pdf', [CVController::class, 'exportPDF'])->name('exportPDF');
-
+Route::get('/testmail', [JobController::class, 'sendemail']);
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {
     return view($name);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

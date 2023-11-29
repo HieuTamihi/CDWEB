@@ -12,10 +12,10 @@
                     </div>
                     <div class="info">
                         <h5 class="text-lg font-bold">{{ $detailJob->name_company }}</h5>
-                        <form action="{{ route(follower.store) }}" method="POST">
+                        <form action="{{ route('follower.store') }}" method="POST">
                             @csrf
                             <button type="submit">
-                                <input hidden value="{{ $detailJob->idfollower }}" name="id">
+                                <input hidden value="{{ $detailJob->id }}" name="id">
                                 <div class="d-flex align-items-center">
                                     <svg class="mr-2" stroke="currentColor" fill="none" stroke-width="1.5"
                                         viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em"

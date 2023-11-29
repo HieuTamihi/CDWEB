@@ -37,13 +37,13 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
-            'host' => 'smtp.mailgun.org',
+            'host' => 'sandbox.smtp.mailtrap.io',
             'port' =>  587,
             'encryption' => 'tls',
-            'username' => 'trannham05042002@gmail.com',
-            'password' => 'xculktbranlfjeec',
+            'username' => '53588da2356295',
+            'password' => '43f54087cd7787',
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'local_domain' => env('MAIL_EHLO_DMAIN'),
         ],
 
         'ses' => [
