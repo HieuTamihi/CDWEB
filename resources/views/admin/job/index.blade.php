@@ -1,5 +1,11 @@
 <x-header-admin>
 </x-header-admin>
+{{--datatables--}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+{{--datatables--}}
+
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -75,4 +81,12 @@
 
 </div>
 <!-- End of Page Wrapper -->
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#dataTable').DataTable();
+} );
+
+</script>
 <x-footer-admin></x-footer-admin>
+
