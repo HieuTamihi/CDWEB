@@ -1,9 +1,11 @@
 <?php
 
+use App\Follower;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\JobTrackingController;
@@ -27,6 +29,7 @@ Route::get('/', [GoogleController::class, 'index'])->name('index');
 Route::get('/index', [GoogleController::class, 'index'])->name('index');
 //Chi tiết
 Route::get('/chiTiet/{id}', [GoogleController::class, 'getDetailJob'])->name('getDetailJob');
+
 
 //Blog
 Route::resource('blog', BlogController::class);
@@ -103,6 +106,8 @@ Route::resource('recruitment', RecruitmentController::class);
 //Danh sách công việc đang theo dõi
 Route::resource('jobTracking', JobTrackingController::class);
 Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking'])->name('listJobTracking');
+
+Route::resource('followers', FollowerController::class);
 
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {
