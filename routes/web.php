@@ -107,7 +107,9 @@ Route::resource('recruitment', RecruitmentController::class);
 Route::resource('jobTracking', JobTrackingController::class);
 Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking'])->name('listJobTracking');
 
-Route::resource('followers', FollowerController::class);
+Route::resource('follower', FollowerController::class);
+
+Route::get('cv/export_pdf', [CVController::class, 'exportPDF'])->name('exportPDF');
 
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {

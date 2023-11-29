@@ -94,7 +94,7 @@
                         @if (Auth::user()->role === 3 || Auth::user()->role === 1)
                             <a href="#" class="pr-3">
                                 <button class="text-white py-2 px-4 bg-dangtuyen border">
-                                    <span class="dangtuyen">Đăng tuyển</span>
+                                        <span class="dangtuyen">Đăng tuyển</span>
                                     <span><i class="fa-solid fa-arrow-right"></i></span>
                                 </button>
                             </a>

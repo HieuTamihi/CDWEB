@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowerController extends Controller
 {
-    private $followers;
+    private $follower;
     public function __construct()
     {
-        $this->followers = new Follower();
+        $this->follower = new Follower();
     }
     public function store(Request $request)
     {

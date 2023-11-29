@@ -6,6 +6,8 @@ use App\Http\Requests\ImageRequest;
 use App\Models\CV;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\PDF;
+
 
 class CVController extends Controller
 {
@@ -223,5 +225,13 @@ class CVController extends Controller
             $cv->delete();
             return redirect()->route('listCV')->with('success', 'Xóa thành công!');
         }
+    }
+
+
+    public function exportPDF($file_cv)
+    {
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->print_order_convert($file_cv));
+        return $pdf->stream();
     }
 }

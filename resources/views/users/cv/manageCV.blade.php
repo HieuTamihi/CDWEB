@@ -44,7 +44,7 @@
                                 <a href="{{ route('cv.edit', $item_cv->id) }}" class="ml-2">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a href="" class="ml-2">
+                                <a href="{{ route('cv.export_pdf')}}" class="ml-2">
                                     <i class="fa-solid fa-download"></i>
                                 </a>
                                 <a href="users.cv.delete/{{ $item_cv->id }}" data-method="delete"
