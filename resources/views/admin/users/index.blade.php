@@ -4,6 +4,9 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Danh sách users</h1>
+    <a href="admin.users.create" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i>
+    </a>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -14,32 +17,36 @@
                             <th>Tên</th>
                             <th>Số điện thoại</th>
                             <th>Ngày sinh</th>
-                            <th>Địa chỉ</th>
                             <th>Tình trạng</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <a href="admin.users.create">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                    <a href="admin.users.edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->date }}</td>
+                                <td>
+                                    @if ($user->status == 1)
+                                        <span class="text-success">Hoạt động</span>
+                                    @elseif($user->status == 2)
+                                        <span class="text-danger">Khóa</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="admin.users.edit/{{ $user->id }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="admin.users.delete/{{ $user->id }}" data-method="delete"
+                                            data-id="{{ $user->id}}" onclick="return confirm('Are you sure to delete?')">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

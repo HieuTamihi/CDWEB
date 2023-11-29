@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CV;
 use App\Models\Cv_management;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CvManagementController extends Controller
 {

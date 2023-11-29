@@ -5,8 +5,11 @@
         <div class="bg-secondary p-5 rounded">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('images/cv/' . $cv->avatar) }}" alt="" class="avt-cv d-block m-auto">
-                </div>
+                    <div class="w-50">
+                        <img src="{{ asset('images/cv/' . $cv->avatar) }}" alt="" class="avt-cv w-100 d-block m-auto">
+                    </div>
+                    </div>
+
                 <div class="col-md-8">
                     <div class="cv-name">
                         <h3>{{ $cv->full_name }}</h3>

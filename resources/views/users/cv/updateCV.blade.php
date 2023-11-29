@@ -22,7 +22,7 @@
                             <label class="form-label w-50 font-weight-bold required-input">Điện thoại:</label>
                             <input type="text" class="form-control" required>
                         </div>
-                        <div class="mb-3 d-flex"> 
+                        <div class="mb-3 d-flex">
                             <label class="form-label w-50 font-weight-bold required-input">Giới tính:</label>
                             <select name="" id="" class="form-control" required>
                                 <option value="0">Nam</option>

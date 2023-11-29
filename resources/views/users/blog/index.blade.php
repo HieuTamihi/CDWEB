@@ -8,7 +8,7 @@
             <div class="row">
                 @foreach ($blogNew as $blog_value)
                     <div class="col-md-3">
-                        <a href="#">
+                        <a href="{{route('detail_blog',$blog_value->id)}}">
                             <div class="info-job p-1">
                                 <div class="w-50">
                                     <img src="{{ asset('images/blog/' . $blog_value->Image) }}" alt=""
