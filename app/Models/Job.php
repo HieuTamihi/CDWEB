@@ -17,6 +17,9 @@ class Job extends Model
         'skills',
         'required',
         'salary',
+        'formality',
+        'Contract_type',
+        'technology_used',
     ];
     public function getJobNew()
     {

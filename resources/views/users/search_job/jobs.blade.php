@@ -11,14 +11,17 @@
                 @foreach ($job as $item_job)
                     <div class="item-job bg-white py-2 my-2">
                         <div class="row">
+
                             <div class="col-md-3">
                                 <img src="{{ asset('images/company/' . $item_job->image) }}" alt=""
                                     class="d-block m-auto w-100">
                             </div>
                             <div class="col-md-8">
-                                <div class="title-job text-danger font-weight-bold">
-                                    {{ $item_job->title }}
-                                </div>
+                                <a style="text-decoration: none" href="{{ route('showjob', $item_job->id) }}">
+                                    <div class="title-job text-danger font-weight-bold">
+                                        {{ $item_job->title }}
+                                    </div>
+                                </a>
                                 <div class="name-company-job">
                                     {{ $item_job->name_company }}
                                 </div>
@@ -26,7 +29,8 @@
                                     @if (Auth::check())
                                         {{ $item_job->salary }}
                                     @else
-                                        <a href="{{ asset('login') }}" class="text-danger text-xs">Đăng nhập để xem mức
+                                        <a href="{{ asset('login') }}" class="text-danger text-xs">Đăng nhập để xem
+                                            mức
                                             lương</a>
                                     @endif
                                 </div>
@@ -41,6 +45,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-1">
                                 <form action="{{ route('jobTracking.store') }}" method="POST">
                                     @csrf

@@ -1,5 +1,10 @@
 <x-header-admin>
 </x-header-admin>
+
+<form action="{{ route('searchJobAdmin') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -8,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive " >
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -38,12 +43,14 @@
                                         <a href="admin.job.create">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>
-                                        <a href="admin.job.edit/{{$job->stt}}">
+                                        <a href="admin.job.edit/{{ $job->stt }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="admin.job.delete/{{ $job->stt }}"  data-method="delete"  data-id="{{ $job->stt}"     onclick="return confirm('Are you sure to delete?')" >
+                                        <a href="admin.job.delete/{{ $job->stt }}" data-method="delete"
+                                            data-id="{{ $job->stt }}"
+                                            onclick="return confirm('Are you sure to delete?')">
                                             <i class="fa-solid fa-trash"></i>
-                                          </a>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -75,4 +82,6 @@
 
 </div>
 <!-- End of Page Wrapper -->
+
+
 <x-footer-admin></x-footer-admin>

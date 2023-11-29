@@ -21,6 +21,9 @@ return new class extends Migration
             $table->text('required')->nullable();
             $table->string('salary');
             $table->string('status');
+            $table->string('formality')->nullable();
+            $table->string('Contract_type')->nullable();
+            $table->string('technology_used')->nullable();
             $table->timestamps();
         });
     }

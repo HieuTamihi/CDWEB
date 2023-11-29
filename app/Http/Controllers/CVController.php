@@ -228,6 +228,18 @@ class CVController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $cvs = CV::where('title', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.blog.results', compact('cvs','keyword'));
+    }
+}
+
+
     public function exportPDF($file_cv)
     {
         $pdf = \App::make('dompdf.wrapper');
@@ -235,3 +247,4 @@ class CVController extends Controller
         return $pdf->stream();
     }
 }
+

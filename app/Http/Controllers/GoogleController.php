@@ -65,4 +65,9 @@ class GoogleController extends Controller
         $detailJob = Employer::find($id);
         return view('users.search_job.chiTietCongViec', compact('detailJob'));
     }
+
+
+
+
+    
 }

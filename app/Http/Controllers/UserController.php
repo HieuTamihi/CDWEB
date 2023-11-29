@@ -163,4 +163,13 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('error', 'Không tìm thấy user nào ' . $id);
         }
     }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $users = User::where('name', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.users.results', compact('users','keyword'));
+    }
 }

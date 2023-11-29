@@ -25,6 +25,9 @@ class JobPostingSeeder extends Seeder
                 'required' => 'Khả năng trình bày, giao tiếp: Rõ ràng, logic và khá lưu loát.',
                 'salary' => '1000$',
                 'status' => 1,
+                'formality'=>'In Office',
+                'Contract_type' =>'Fulltime',
+                'technology_used'=>'Python',
             ],
             [
                 'employer_id' => 2,
@@ -38,6 +41,9 @@ class JobPostingSeeder extends Seeder
                 Design and implement database schemas and queries.',
                 'salary' => '1500$',
                 'status' => 1,
+                'formality'=>'In Office',
+                'Contract_type' =>'Fulltime',
+                'technology_used'=>'Python',
             ],
             [
                 'employer_id' => 3,
@@ -50,6 +56,9 @@ class JobPostingSeeder extends Seeder
                 Đọc hiểu tài liệu Tiếng Anh',
                 'salary' => '2000$',
                 'status' => 1,
+                'formality'=>'In Office',
+                'Contract_type' =>'Fulltime',
+                'technology_used'=>'Python',
             ],
             [
                 'employer_id' => 4,
@@ -62,6 +71,9 @@ class JobPostingSeeder extends Seeder
                 Đọc hiểu và viết tài liệu chuyên ngành bằng tiếng Anh.',
                 'salary' => '2000$',
                 'status' => 1,
+                'formality'=>'In Office',
+                'Contract_type' =>'Fulltime',
+                'technology_used'=>'Python',
             ],
             [
                 'employer_id' => 1,
@@ -74,6 +86,9 @@ class JobPostingSeeder extends Seeder
                 Build and maintain backend systems for cloud platform projects with Python.',
                 'salary' => '3000$',
                 'status' => 1,
+                'formality'=>'In Office',
+                'Contract_type' =>'Fulltime',
+                'technology_used'=>'Python',
             ],
             [
                 'employer_id' => 2,
@@ -82,10 +97,16 @@ class JobPostingSeeder extends Seeder
                 'type' => ' Middle, Senior',
                 'skills' => 'Strong knowledge in Reactjs/Nextjs/Threejs (module, page, client/server side render)
                 Expertise in compiler: Webpack, browserify, npm, yarn',
-                'required' => 'Bachelor’s degree in computer science, Software development, Information technology, or experiences in other related fields, etc. 
+                'required' => 'Bachelor’s degree in computer science, Software development, Information technology, or experiences in other related fields, etc.
                 From 3+ years of frontend software development experience in software/digital product company',
                 'salary' => '1000$',
                 'status' => 1,
+                'formality'=>'In Office',
+                'Contract_type' =>'Fulltime',
+                'technology_used'=>'Python
+                Data Engineer
+                Spark
+                Kafka',
             ],
         ]);
     }

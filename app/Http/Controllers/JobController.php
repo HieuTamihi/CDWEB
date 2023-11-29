@@ -154,6 +154,14 @@ class JobController extends Controller
         return redirect()->route('admin.job.index')->with('success', 'Job updated successfully.');
     }
 
+    public function showJob($id)
+    {
+        $showJob = Job::find($id);
+        if(!$showJob){
+            return back();
+        }
+        return view('users.post-job.chitietvieclam',compact('showJob'));
+    }
     public function destroy($id)
     {
         $job = Job::findOrFail($id);
@@ -164,6 +172,14 @@ class JobController extends Controller
             return redirect()->route('admin.job.index')->with('error', 'Không tìm thấy công việc nào có ID là ' . $id);
         }
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        // Sử dụng model để tìm kiếm dữ liệu
+        $jobs = Job::where('title', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.job.results', compact('jobs','keyword'));
 
     public function sendemail()
     {

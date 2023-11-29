@@ -134,4 +134,13 @@ class EmployerController extends Controller
             return redirect()->route('admin.employer.index')->with('error', 'Không tìm thấy employer nào ' . $id);
         }
     }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Sử dụng model để tìm kiếm dữ liệu
+        $employers = Employer::where('name_company', 'like', '%' . $keyword . '%')->get();
+
+        return view('admin.employer.results', compact('employers','keyword'));
+    }
 }
