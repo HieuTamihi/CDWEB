@@ -181,27 +181,27 @@ class JobController extends Controller
 
         return view('admin.job.results', compact('jobs','keyword'));
 
-    public function sendemail()
-    {
-        $job =  Job::find(11);
-        $employer = Employer::find(1);
-        $followers = Follower::leftJoin('users', 'users.id', 'followers.user_id')
-            ->leftJoin('employer', 'employer.id', 'followers.employer_id')
-            ->select('followers.id', 'users.email', 'users.name', 'followers.employer_id', 'employer.name_company')
-            ->where('employer.id',  $job->employer_id)
-            ->get();
+    // public function sendemail()
+    // {
+    //     $job =  Job::find(11);
+    //     $employer = Employer::find(1);
+    //     $followers = Follower::leftJoin('users', 'users.id', 'followers.user_id')
+    //         ->leftJoin('employer', 'employer.id', 'followers.employer_id')
+    //         ->select('followers.id', 'users.email', 'users.name', 'followers.employer_id', 'employer.name_company')
+    //         ->where('employer.id',  $job->employer_id)
+    //         ->get();
 
-        foreach ($followers as $follower) {
-            var_dump($follower->email . '-' . $follower->name . '-' . $follower->employer_id);
-            // Process each follower object here
-            if ($follower->employer_id == $job->employer_id) {
-                Mail::send('email.test', (['name' => $follower->name]), function ($email) use ($follower) {
-                    $email->subject('tin công việc' . $follower->name_company);
-                    $email->to($follower->email, $follower->name);
-                });
-            }
-        }
-        // foreach ($followers as  $item) {
+    //     foreach ($followers as $follower) {
+    //         var_dump($follower->email . '-' . $follower->name . '-' . $follower->employer_id);
+    //         // Process each follower object here
+    //         if ($follower->employer_id == $job->employer_id) {
+    //             Mail::send('email.test', (['name' => $follower->name]), function ($email) use ($follower) {
+    //                 $email->subject('tin công việc' . $follower->name_company);
+    //                 $email->to($follower->email, $follower->name);
+    //             });
+    //         }
+    //     }
+    //     // foreach ($followers as  $item) {
 
         //     if ($item->employer_id == $job->employer_id) {
         //         Mail::send('email.test', (['name' => $employer->name_company]), function ($email) use ($follower) {

@@ -240,11 +240,10 @@ class CVController extends Controller
 }
 
 
-    public function exportPDF($file_cv)
-    {
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->print_order_convert($file_cv));
-        return $pdf->stream();
-    }
-}
-
+//     public function exportPDF($file_cv)
+//     {
+//         $pdf = \App::make('dompdf.wrapper');
+//         $pdf->loadHTML($this->print_order_convert($file_cv));
+//         return $pdf->stream();
+//     }
+// }
