@@ -34,7 +34,7 @@
 
                                         @foreach ($jobs as $job)
                                         <tr>
-                                            <td>{{ $job->stt }}</td>
+                                            <td>{{ $job->idJob }}</td>
                                             <td>{{ $job->name_company }}</td>
                                             <td>{{ $job->title }}</td>
                                             <td>{{ $job->experience }}</td>

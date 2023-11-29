@@ -177,7 +177,10 @@ class JobController extends Controller
     {
         $keyword = $request->input('keyword');
         // Sử dụng model để tìm kiếm dữ liệu
-        $jobs = Job::where('title', 'like', '%' . $keyword . '%')->get();
+        $jobs = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')
+            ->where('title', 'like', '%' . $keyword . '%')
+            ->select('*', 'job_posting.id as idJob')
+            ->get();
 
         return view('admin.job.results', compact('jobs', 'keyword'));
     }
@@ -186,9 +189,9 @@ class JobController extends Controller
         $keyword = $request->input('keyword');
         // Sử dụng model để tìm kiếm dữ liệu
         $job = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')
-        ->where('title', 'like','%' . $keyword . '%')
-        ->select('*', 'job_posting.id as idJob')
-        ->get();
+            ->where('title', 'like', '%' . $keyword . '%')
+            ->select('*', 'job_posting.id as idJob')
+            ->get();
         return view('users.search_job.results', compact('job', 'keyword'));
     }
 
