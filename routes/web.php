@@ -13,6 +13,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\RecruitmentController;
+use App\Http\Controllers\UserController;
+use App\Models\Recruitment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,7 +67,6 @@ Route::get('/admin.job.results', [JobController::class, 'searchAdmin'])->name('s
 Route::get('/users.search_job.results', [JobController::class, 'search'])->name('searchJob');
 
 //employer
-Route::resource('employer', EmployerController::class);
 Route::get('/admin.employer.index', [EmployerController::class, 'indexadmin']);
 Route::post('/admin.employer.index', [EmployerController::class, 'store'])->name('admin.employer.index');
 Route::get('/admin.employer.create', [EmployerController::class, 'create']);
@@ -72,6 +74,7 @@ Route::get('/admin.employer.edit/{id}', [EmployerController::class, 'edit']);
 Route::put('/admin.employer.update/{job}', [EmployerController::class, 'update'])->name('admin.employer.update');
 Route::get('/admin.employer.delete/{blog}', [EmployerController::class, 'destroy']);
 Route::get('/admin.employer.results', [EmployerController::class, 'search'])->name('searchEmployerAdmin');
+Route::delete('/admin.employer.index/{id}', [EmployerController::class, 'destroy']);
 
 //user
 Route::resource('user', UserController::class);
@@ -85,7 +88,7 @@ Route::get('/user.edit/{id}', [UserController::class, 'edit'])->name('user.edit'
 Route::post('/admin.users.store', [UserController::class, 'store'])->name('users.store');
 Route::get('/admin.users.results', [UserController::class, 'search'])->name('searchUserAdmin');
 
-
+Route::get('/admin.user.index', [UserController::class, 'indexadmin']);
 //Đăng nhập bằng google
 Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
@@ -112,12 +115,14 @@ Route::get('/listCV', [CVController::class, 'listCV'])->name('listCV');
 Route::get('/deleteCV/{id}', [CVController::class, 'deleteCV'])->name('deleteCV');
 Route::get('/createCV', [CVController::class, 'createCV'])->name('createCV');
 Route::post('/storeCV', [CVController::class, 'storeCV'])->name('storeCV');
+
 Route::get('/editCV/{id}', [CVController::class, 'editCV'])->name('editCV');
 Route::put('/updateCV/{id}', [CVController::class, 'updateCV'])->name('updateCV');
 Route::get('/admin.cv.results', [CVController::class, 'search'])->name('searchCVAdmin');
 
 // Route::put('/users.cv.update/{item_cv}', [CVController::class, 'update']);
 Route::get('/users.cv.delete/{cv}', [CVController::class, 'destroy']);
+
 //Jobs
 Route::resource('job', JobController::class);
 
@@ -127,6 +132,7 @@ Route::get('/admin.recruitment.results', [RecruitmentController::class, 'searchA
 
 //Danh sách công việc đang theo dõi
 Route::resource('jobTracking', JobTrackingController::class);
+
 Route::get('/admin.jobTracking', [JobTrackingController::class, 'listJobTracking'])->name('listJobTracking');
 Route::get('/admin.job_tracking.results', [JobTrackingController::class, 'search'])->name('searchJob_trackingAdmin');
 
@@ -134,6 +140,26 @@ Route::resource('follower', FollowerController::class);
 
 Route::get('cv/export_pdf', [CVController::class, 'exportPDF'])->name('exportPDF');
 Route::get('/testmail', [JobController::class, 'sendemail']);
+
+//Đăng tuyển công việc
+Route::get('/indexJob', [JobController::class, 'indexJob'])->name('indexJob');
+Route::get('/createJob', [JobController::class, 'createJob'])->name('createJob');
+Route::post('/storeJob', [JobController::class, 'storeJob'])->name('storeJob');
+Route::get('/editJob/{id}', [JobController::class, 'editJob'])->name('editJob');
+Route::put('/updateJob/{id}', [JobController::class, 'updateJob'])->name('updateJob');
+Route::get('/deleteJob/{id}', [JobController::class, 'deleteJob'])->name('deleteJob');
+
+Route::get('/watchJob/{id}', [JobController::class, 'watchJob'])->name('watchJob');
+
+//Chi tiết, ứng tuyển
+Route::get('/chiTietCongViec/{id}', [JobController::class, 'chiTietCongViec'])->name('chiTietCongViec');
+Route::post('/createUngTuyen', [RecruitmentController::class, 'createUngTuyen'])->name('createUngTuyen');
+Route::post('/recruitment/xetduyet/{id}', [RecruitmentController::class, 'xetDuyet'])->name('recruitment.xetduyet');
+//Báo cáo
+Route::get('/baoCaoCongViec', [JobController::class, 'baoCaoCongViec'])->name('baoCaoCongViec');
+Route::get('/listBaoCao', [JobController::class, 'listBaoCao'])->name('listBaoCao');
+Route::post('/capNhatBaoCao/{id}', [JobController::class, 'capNhatBaoCao'])->name('capNhatBaoCao');
+
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {
     return view($name);

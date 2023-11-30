@@ -31,23 +31,35 @@
                                 <td>{{ $item->type }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>
-                                    @if ($item->Status == 1)
+                                    @if ($item->tinhTrang == 1)
+                                        <span>Đợi duyệt</span>
+                                    @endif
+                                    @if ($item->tinhTrang == 2)
                                         <span>Đã duyệt</span>
                                     @endif
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-between">
                                         {{-- <a href="{{ route('recruitment.create') }}">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="{{ route('recruitment.create') }}">
                                             <i class="fa-solid fa-plus"></i>
                                         </a> --}}
                                         <a href="{{ route('recruitment.show', $item->idRecruit) }}">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <form action="{{ route('recruitment.destroy', $item->idRecruit) }}" method="POST">
+                                        <form action="{{ route('recruitment.destroy', $item->idRecruit) }}"
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn p-0 m-0"><i
-                                                    class="fa-solid fa-trash text-primary"></i></button>
+                                            <button type="submit" class="btn p-0 m-0">
+                                                <i class="fa-solid fa-trash text-primary"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('recruitment.xetduyet', $item->idRecruit) }}"
+                                            method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">Xét duyệt</button>
                                         </form>
                                     </div>
                                 </td>

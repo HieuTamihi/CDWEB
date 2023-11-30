@@ -36,14 +36,14 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'url' => env('MAIL_URL'),
-            'host' => 'sandbox.smtp.mailtrap.io',
-            'port' =>  587,
+            // 'url' => env('MAIL_URL'),
+            'host' => 'smtp.gmail.com',
+            'port' => 587,
             'encryption' => 'tls',
-            'username' => '53588da2356295',
-            'password' => '43f54087cd7787',
+            'username' => 'cdptw2.demo@gmail.com',
+            'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DMAIN'),
+            // 'local_domain' => null,
         ],
 
         'ses' => [

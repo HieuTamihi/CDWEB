@@ -100,6 +100,10 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Công việc theo dõi</span>
                 </a>
+                <a class="nav-link" href="{{ route('listBaoCao') }}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Báo cáo</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -248,6 +252,4 @@
                         @endif
                     </div>
                 </div>
-
-
-
+                <<<<<<< HEAD=======>>>>>>> Hieu-CK

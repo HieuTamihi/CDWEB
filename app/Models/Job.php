@@ -20,6 +20,7 @@ class Job extends Model
         'formality',
         'Contract_type',
         'technology_used',
+        'status'
     ];
     public function getJobNew()
     {

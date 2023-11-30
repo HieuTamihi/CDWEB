@@ -226,8 +226,6 @@ class CVController extends Controller
             return redirect()->route('listCV')->with('success', 'Xóa thành công!');
         }
     }
-
-
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -237,7 +235,6 @@ class CVController extends Controller
 
         return view('admin.cv.results', compact('cv_management','keyword'));
     }
-
 }
 
 

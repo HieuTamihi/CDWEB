@@ -112,14 +112,15 @@ class JobTrackingController extends Controller
         }
     }
     public function search(Request $request)
-{   $keyword = $request->input('keyword');
-    $jobTrackings = jobTracking::leftJoin('job_posting', 'job_posting.id', 'job_tracking.job_id')
-    ->leftJoin('employer', 'employer.id', 'job_posting.employer_id')
-    ->leftJoin('users', 'users.id', 'job_tracking.user_id')
-    ->where('job_posting.title', 'like', '%' . $keyword . '%')
-    ->select('*', 'job_tracking.id as idTracking')
-    ->get();
+    {
+        $keyword = $request->input('keyword');
+        $jobTrackings = jobTracking::leftJoin('job_posting', 'job_posting.id', 'job_tracking.job_id')
+            ->leftJoin('employer', 'employer.id', 'job_posting.employer_id')
+            ->leftJoin('users', 'users.id', 'job_tracking.user_id')
+            ->where('job_posting.title', 'like', '%' . $keyword . '%')
+            ->select('*', 'job_tracking.id as idTracking')
+            ->get();
 
-    return view('admin.job_tracking.results', compact('jobTrackings', 'keyword'));
-}
+        return view('admin.job_tracking.results', compact('jobTrackings', 'keyword'));
+    }
 }

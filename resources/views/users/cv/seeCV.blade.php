@@ -8,8 +8,7 @@
                     <div class="w-50">
                         <img src="{{ asset('images/cv/' . $cv->avatar) }}" alt="" class="avt-cv w-100 d-block m-auto">
                     </div>
-                    </div>
-
+                </div>
                 <div class="col-md-8">
                     <div class="cv-name">
                         <h3>{{ $cv->full_name }}</h3>

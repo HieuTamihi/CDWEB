@@ -16,6 +16,7 @@ class Recruitment extends Model
         'Status',
         'Introduce',
         'File',
+        'Status'
     ];
     public function getJobNew()
     {
@@ -31,7 +32,7 @@ class Recruitment extends Model
     {
         $recruitment = Recruitment::leftJoin('users', 'users.id', 'recruitment.customer_id')
             ->leftJoin('job_posting', 'job_posting.id', 'recruitment.job_posting_id')
-            ->select('*', 'recruitment.id as idRecruit')
+            ->select('*', 'recruitment.id as idRecruit','recruitment.status as tinhTrang')
             ->get();
         return $recruitment;
     }

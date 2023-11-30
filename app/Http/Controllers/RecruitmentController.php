@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MyDatabaseMail;
 use App\Models\Job;
 use App\Models\Recruitment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class RecruitmentController extends Controller
 {
@@ -49,6 +52,35 @@ class RecruitmentController extends Controller
             $recruitment->save();
 
             return redirect()->route('recruitment.index')->with('success', 'Thêm thành công.');
+        } else {
+            return view('login');
+        }
+    }
+
+    public function createUngTuyen(Request $request)
+    {
+        if (Auth::check()) {
+            if (Auth::user()->role == 2 || Auth::user()->role == 1) {
+                try {
+                    $validatedData = $request->validate([
+                        'Introduce' => 'required|string|max:255',
+                    ]);
+
+                    $recruitment = new Recruitment();
+                    $recruitment->customer_id = Auth::user()->id;
+                    $recruitment->job_posting_id = decrypt($request->action);
+                    $recruitment->Introduce = $validatedData['Introduce'];
+                    $recruitment->Status = 1;
+                    $recruitment->save();
+
+                    return redirect()->back()->with('success', 'Ứng tuyển thành công!');
+                } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+                    Log::error('Decryption failed: ' . $e->getMessage());
+                    abort(404);
+                }
+            } else {
+                abort('404');
+            }
         } else {
             return view('login');
         }
@@ -119,6 +151,7 @@ class RecruitmentController extends Controller
             return redirect()->route('recruitment.index')->with('success', 'Xóa thành công.');
         }
     }
+
     public function searchAdmin(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -126,6 +159,22 @@ class RecruitmentController extends Controller
         // Sử dụng model để tìm kiếm dữ liệu
         $listCrui = Recruitment::where('name_company', 'like', '%' . $keyword . '%')->get();
 
-        return view('admin.recruitment.results', compact('listCrui','keyword'));
+        return view('admin.recruitment.results', compact('listCrui', 'keyword'));
+    }
+    public function xetDuyet($id)
+    {
+        $recruitment = Recruitment::leftJoin('users', 'users.id', 'recruitment.customer_id')
+            ->where('recruitment.id', $id)
+            ->select('*', 'recruitment.Status as tinhTrang')
+            ->first();
+        // Gửi email
+        if ($recruitment->tinhTrang == 1) {
+            $recipientEmail = $recruitment->email;
+            Mail::to($recipientEmail)->send(new MyDatabaseMail());
+            Recruitment::where('id', $id)->update(['Status' => 2]);
+            return redirect()->route('recruitment.index')->with('success', 'Xét duyệt thành công và email đã được gửi.');
+        } else {
+            return redirect()->route('recruitment.index')->with('error', 'Lỗi xét duyệt');
+        }
     }
 }
