@@ -185,37 +185,38 @@
                             </div>
 
                             <!-- Modal body -->
-                            <div class="modal-body">
-                                <form action="{{ route('createUngTuyen') }}" method="POST" class="needs-validation"
-                                    novalidate>
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="uname">Họ và tên</label>
-                                        @if (Auth::check())
+                            @if (Auth::check())
+                                <div class="modal-body">
+                                    <form action="{{ route('createUngTuyen') }}" method="POST"
+                                        class="needs-validation" novalidate>
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="uname">Họ và tên</label>
                                             <input type="text" class="form-control" placeholder="Nguyen Van A"
                                                 required readonly value="{{ Auth::user()->name }}">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Vui lòng nhập họ và tên</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" readonly
-                                            placeholder="abc@gmail.com" required value="{{ Auth::user()->email }}">
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Vui lòng nhập email</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="introduce">Đoạn giới thiệu bản thân hoặc link
-                                            portfolio</label>
-                                        <textarea class="form-control" rows="5" id="Introduce" name="Introduce"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-danger float-right" name="action"
-                                        value="{{ encrypt($job->id) }}">Submit</button>
-                                    <button type="submit" class="btn float-right" data-dismiss="modal">Hủy</button>
-                                </form>
-                            </div>
-
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" readonly
+                                                placeholder="abc@gmail.com" required
+                                                value="{{ Auth::user()->email }}">
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Vui lòng nhập email</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="introduce">Đoạn giới thiệu bản thân hoặc link
+                                                portfolio</label>
+                                            <textarea class="form-control" rows="5" id="Introduce" name="Introduce"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger float-right" name="action"
+                                            value="{{ encrypt($job->id) }}">Submit</button>
+                                        <button type="submit" class="btn float-right"
+                                            data-dismiss="modal">Hủy</button>
+                                    </form>
+                                </div>
+                            @endif
                             <script>
                                 // Disable form submissions if there are invalid fields
                                 (function() {
