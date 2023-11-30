@@ -12,13 +12,17 @@
                     <div class="item-job bg-white py-2 my-2">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="{{ asset('images/company/' . $item_job->image) }}" alt=""
-                                    class="d-block m-auto w-100">
+                                <a href="{{ route('chiTietCongViec', $item_job->id) }}">
+                                    <img src="{{ asset('images/company/' . $item_job->image) }}" alt=""
+                                        class="d-block m-auto w-100">
+                                </a>
                             </div>
                             <div class="col-md-8">
-                                <div class="title-job text-danger font-weight-bold">
-                                    {{ $item_job->title }}
-                                </div>
+                                <a href="{{ route('chiTietCongViec', $item_job->id) }}">
+                                    <div class="title-job text-danger font-weight-bold">
+                                        {{ $item_job->title }}
+                                    </div>
+                                </a>
                                 <div class="name-company-job">
                                     {{ $item_job->name_company }}
                                 </div>

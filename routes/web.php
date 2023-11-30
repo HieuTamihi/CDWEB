@@ -8,6 +8,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\JobTrackingController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\UserController;
+use App\Models\Recruitment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,6 +82,22 @@ Route::resource('recruitment', RecruitmentController::class);
 
 //Danh sách công việc đang theo dõi
 Route::resource('jobTracking', JobTrackingController::class);
+
+//Đăng tuyển công việc
+Route::get('/indexJob', [JobController::class, 'indexJob'])->name('indexJob');
+Route::get('/createJob', [JobController::class, 'createJob'])->name('createJob');
+Route::post('/storeJob', [JobController::class, 'storeJob'])->name('storeJob');
+Route::get('/editJob/{id}', [JobController::class, 'editJob'])->name('editJob');
+Route::put('/updateJob/{id}', [JobController::class, 'updateJob'])->name('updateJob');
+Route::get('/deleteJob/{id}', [JobController::class, 'deleteJob'])->name('deleteJob');
+
+//Chi tiết, ứng tuyển
+Route::get('/chiTietCongViec/{id}', [JobController::class, 'chiTietCongViec'])->name('chiTietCongViec');
+Route::post('/createUngTuyen', [RecruitmentController::class, 'createUngTuyen'])->name('createUngTuyen');
+//Báo cáo
+Route::get('/baoCaoCongViec', [JobController::class, 'baoCaoCongViec'])->name('baoCaoCongViec');
+Route::get('/listBaoCao', [JobController::class, 'listBaoCao'])->name('listBaoCao');
+Route::post('/capNhatBaoCao/{id}', [JobController::class, 'capNhatBaoCao'])->name('capNhatBaoCao');
 
 //chuyen trang
 Route::get('/{name?}', function ($name = "index") {

@@ -32,7 +32,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between align-items-center">
                                         <a href="{{ route('recruitment.create') }}">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>
@@ -45,6 +45,9 @@
                                             <button type="submit" class="btn p-0 m-0"><i
                                                     class="fa-solid fa-trash text-primary"></i></button>
                                         </form>
+                                        <a href="#" class="btn btn-success">
+                                            Xét duyệt
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MyDatabaseMail;
 use App\Models\Job;
 use App\Models\Recruitment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class RecruitmentController extends Controller
 {
@@ -54,6 +57,35 @@ class RecruitmentController extends Controller
         }
     }
 
+    public function createUngTuyen(Request $request)
+    {
+        if (Auth::check()) {
+            if (Auth::user()->role == 2 || Auth::user()->role == 1) {
+                try {
+                    $validatedData = $request->validate([
+                        'Introduce' => 'required|string|max:255',
+                    ]);
+
+                    $recruitment = new Recruitment();
+                    $recruitment->customer_id = Auth::user()->id;
+                    $recruitment->job_posting_id = decrypt($request->action);
+                    $recruitment->Introduce = $validatedData['Introduce'];
+                    $recruitment->Status = 1;
+                    $recruitment->save();
+
+                    return redirect()->back()->with('success', 'Ứng tuyển thành công!');
+                } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+                    Log::error('Decryption failed: ' . $e->getMessage());
+                    abort(404);
+                }
+            } else {
+                abort('404');
+            }
+        } else {
+            return view('login');
+        }
+    }
+
     /**
      * Display the specified resource.
      */
@@ -93,7 +125,7 @@ class RecruitmentController extends Controller
                 $user->email = $request->email;
                 $user->save();
             }
-            
+
             return redirect()->route('recruitment.index')->with('success', 'Cập nhật thành công.');
         }
     }
@@ -111,5 +143,15 @@ class RecruitmentController extends Controller
             $recruitment->delete();
             return redirect()->route('recruitment.index')->with('success', 'Xóa thành công.');
         }
+    }
+    public function sendDatabaseEmail()
+    {
+        Mail::to('recipient@example.com')->send(new MyDatabaseMail());
+
+        if (Mail::failures()) {
+            return response()->json(['message' => 'Email không gửi được.'], 500);
+        }
+
+        return response()->json(['message' => 'Email đã được gửi thành công.']);
     }
 }

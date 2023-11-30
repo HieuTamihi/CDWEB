@@ -95,6 +95,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('listBaoCao') }}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Báo cáo</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
