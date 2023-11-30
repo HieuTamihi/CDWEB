@@ -26,26 +26,11 @@
                                     <div class="col-9">
                                         <p class="m-0 font-weight-bold">{{ $job->title }}</p>
                                         <p class="address font-italic ">{{ $job->Infor }}</p>
-                                        <a style="text-decoration:none; color:black;     " href=""><i
+                                        <a style="text-decoration:none; color:black;" href=""><i
                                                 class="bi bi-geo-alt-fill"> {{ $job->address }}</i></a>
-                                        <div class=" thuongluong d-flex align-items-center justify-content-between">
-                                            <span class="text-danger"><i class="bi bi-cash">
-                                                    {{ $job->salary }}</i></span>
-                                            <form action=""> <input type="hidden" value="">
-                                                <button type="submit" class=" border-0 bg-white p-0 m-0 ">
-                                                    <i class="bi bi-bookmark-fill "></i>
-                                                </button>
-                                            </form>
-                                            <img src="" alt="" class="w-100">
-                                        </div>
-                                    </div>
-                                    <div class="col-9">
-                                        <p class="m-0 font-weight-bold">{{ $job->title }}</p>
-                                        <p class="address font-italic ">Tên công ty</p>
-                                        <a style="text-decoration:none; color:black;     " href=""><i
-                                                class="bi bi-geo-alt-fill"> Võ Văn Ngân</i></a>
                                         <div class="thuongluong d-flex align-items-center justify-content-between">
-                                            <a href="#" class="text-danger"><i class="bi bi-cash"></i>Lương</a>
+                                            <a href="#" class="text-danger"><i
+                                                    class="bi bi-cash"></i>{{ $job->salary }}</a>
                                             @if (Auth::check())
                                                 @if (Auth::user()->role !== 3)
                                                     @if (!$checkReport)
@@ -185,37 +170,37 @@
                             </div>
 
                             <!-- Modal body -->
-                            <div class="modal-body">
-                                <form action="{{ route('createUngTuyen') }}" method="POST" class="needs-validation"
-                                    novalidate>
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="uname">Họ và tên</label>
-                                        @if (Auth::check())
+                            @if (Auth::check())
+                                <div class="modal-body">
+                                    <form action="{{ route('createUngTuyen') }}" method="POST"
+                                        class="needs-validation" novalidate>
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="uname">Họ và tên</label>
                                             <input type="text" class="form-control" placeholder="Nguyen Van A"
                                                 required readonly value="{{ Auth::user()->name }}">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Vui lòng nhập họ và tên</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" readonly
-                                            placeholder="abc@gmail.com" required value="{{ Auth::user()->email }}">
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Vui lòng nhập email</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="introduce">Đoạn giới thiệu bản thân hoặc link
-                                            portfolio</label>
-                                        <textarea class="form-control" rows="5" id="Introduce" name="Introduce"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-danger float-right" name="action"
-                                        value="{{ encrypt($job->id) }}">Submit</button>
-                                    <button type="submit" class="btn float-right" data-dismiss="modal">Hủy</button>
-                                </form>
-                            </div>
-
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" readonly
+                                                placeholder="abc@gmail.com" required value="{{ Auth::user()->email }}">
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Vui lòng nhập email</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="introduce">Đoạn giới thiệu bản thân hoặc link
+                                                portfolio</label>
+                                            <textarea class="form-control" rows="5" id="Introduce" name="Introduce"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger float-right" name="action"
+                                            value="{{ encrypt($job->id) }}">Submit</button>
+                                        <button type="submit" class="btn float-right"
+                                            data-dismiss="modal">Hủy</button>
+                                    </form>
+                                </div>
+                            @endif
                             <script>
                                 // Disable form submissions if there are invalid fields
                                 (function() {
