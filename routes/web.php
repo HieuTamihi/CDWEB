@@ -91,9 +91,12 @@ Route::get('/editJob/{id}', [JobController::class, 'editJob'])->name('editJob');
 Route::put('/updateJob/{id}', [JobController::class, 'updateJob'])->name('updateJob');
 Route::get('/deleteJob/{id}', [JobController::class, 'deleteJob'])->name('deleteJob');
 
+Route::get('/watchJob/{id}', [JobController::class, 'watchJob'])->name('watchJob');
+
 //Chi tiết, ứng tuyển
 Route::get('/chiTietCongViec/{id}', [JobController::class, 'chiTietCongViec'])->name('chiTietCongViec');
 Route::post('/createUngTuyen', [RecruitmentController::class, 'createUngTuyen'])->name('createUngTuyen');
+Route::post('/recruitment/xetduyet/{id}', [RecruitmentController::class, 'xetDuyet'])->name('recruitment.xetduyet');
 //Báo cáo
 Route::get('/baoCaoCongViec', [JobController::class, 'baoCaoCongViec'])->name('baoCaoCongViec');
 Route::get('/listBaoCao', [JobController::class, 'listBaoCao'])->name('listBaoCao');

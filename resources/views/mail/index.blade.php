@@ -4,7 +4,7 @@
         <html>
 
         <head>
-            <title></title>
+            <title>{{ Auth::user()->name }}</title>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
                 integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
@@ -13,7 +13,7 @@
 
         <body>
             <div class="container">
-                <h4 class="text-center">Thông báo trúng tuyển công việc</h4>
+                <h4 class="text-center">Thông báo trúng tuyển công ty</h4>
                 <p>
                     Chúng tôi vui mừng thông báo cho bạn biết rằng đơn đăng ký của bạn đã được thông qua thành công qua
                     giai

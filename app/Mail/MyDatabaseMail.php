@@ -38,7 +38,7 @@ class MyDatabaseMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.index',
         );
     }
 
@@ -53,10 +53,10 @@ class MyDatabaseMail extends Mailable
     }
     public function build()
     {
-        $dataFromDatabase = Recruitment::all();
+        $recipientEmail = 'cdptw2.demo@gmail.com';
 
-        return $this->subject('Thông báo nhà tuyển dụng xác nhập hồ sơ của bạn')
-            ->view('mail')
-            ->with(['dataFromDatabase' => $dataFromDatabase]);
+        return $this->to($recipientEmail)
+            ->subject('Thông báo trúng tuyển')
+            ->view('mail.index');
     }
 }

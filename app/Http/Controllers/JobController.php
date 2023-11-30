@@ -28,6 +28,7 @@ class JobController extends Controller
     {
         $job = Job::leftJoin('employer', 'job_posting.employer_id', 'employer.id')
             ->select('*', 'job_posting.id as idJob')
+            ->where('job_posting.status', 1)
             ->get();
         $job->each(function ($jobDate) {
             $updatedAt = Carbon::parse($jobDate->updated_at);
@@ -164,6 +165,33 @@ class JobController extends Controller
 
                     if ($job) {
                         return view('users.post-job.chinhSua', compact('job'));
+                    } else {
+                        abort(404);
+                    }
+                } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+                    Log::error('Decryption failed: ' . $e->getMessage());
+                    abort(404);
+                }
+            } else {
+                abort(404);
+            }
+        } else {
+            return view('login');
+        }
+    }
+
+    public function watchJob($encryptedId)
+    {
+        if (Auth::check()) {
+            if (Auth::user()->role == 3) {
+                try {
+                    $id = decrypt($encryptedId);
+                    $job = Job::where('id', $id)
+                        ->where('employer_id', Auth::user()->id)
+                        ->first();
+
+                    if ($job) {
+                        return view('users.post-job.watch', compact('job'));
                     } else {
                         abort(404);
                     }
@@ -345,6 +373,9 @@ class JobController extends Controller
                         if ($request->action == 1) {
                             $report->status = 2;
                             $report->save();
+                            $job = Job::where('id', $report->job_id)->first();
+                            $job->status = 2;
+                            $job->save();
                             return redirect()->back()->with('success', 'Xác nhận thành công!');
                         }
                         if ($request->action == 2) {

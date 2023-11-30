@@ -144,14 +144,23 @@ class RecruitmentController extends Controller
             return redirect()->route('recruitment.index')->with('success', 'Xóa thành công.');
         }
     }
-    public function sendDatabaseEmail()
+
+    public function xetDuyet($id)
     {
-        Mail::to('recipient@example.com')->send(new MyDatabaseMail());
-
-        if (Mail::failures()) {
-            return response()->json(['message' => 'Email không gửi được.'], 500);
+        $recruitment = Recruitment::leftJoin('users', 'users.id', 'recruitment.customer_id')
+            ->where('recruitment.id', $id)
+            ->select('*', 'recruitment.Status as tinhTrang')
+            ->first();
+        // Gửi email
+        if($recruitment->tinhTrang == 1)
+        {
+            $recipientEmail = $recruitment->email;
+            Mail::to($recipientEmail)->send(new MyDatabaseMail());
+            Recruitment::where('id', $id)->update(['Status' => 2]);
+            return redirect()->route('recruitment.index')->with('success', 'Xét duyệt thành công và email đã được gửi.');
         }
-
-        return response()->json(['message' => 'Email đã được gửi thành công.']);
+        else{
+            return redirect()->route('recruitment.index')->with('error', 'Lỗi xét duyệt');
+        }
     }
 }

@@ -27,7 +27,10 @@
                                 <td>{{ $item->type }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>
-                                    @if ($item->Status == 1)
+                                    @if ($item->tinhTrang == 1)
+                                        <span>Đợi duyệt</span>
+                                    @endif
+                                    @if ($item->tinhTrang == 2)
                                         <span>Đã duyệt</span>
                                     @endif
                                 </td>
@@ -39,15 +42,19 @@
                                         <a href="{{ route('recruitment.edit', $item->idRecruit) }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <form action="{{ route('recruitment.destroy', $item->idRecruit) }}" method="POST">
+                                        <form action="{{ route('recruitment.destroy', $item->idRecruit) }}"
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn p-0 m-0"><i
-                                                    class="fa-solid fa-trash text-primary"></i></button>
+                                            <button type="submit" class="btn p-0 m-0">
+                                                <i class="fa-solid fa-trash text-primary"></i>
+                                            </button>
                                         </form>
-                                        <a href="#" class="btn btn-success">
-                                            Xét duyệt
-                                        </a>
+                                        <form action="{{ route('recruitment.xetduyet', $item->idRecruit) }}"
+                                            method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">Xét duyệt</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

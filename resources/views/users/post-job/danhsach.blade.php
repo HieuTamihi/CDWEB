@@ -25,7 +25,7 @@
                                 <td class="text-center">{{ $item->salary }}</td>
                                 <td class="text-center">
                                     <div class="option-cv">
-                                        <a href="#">
+                                        <a href="{{ route('watchJob', encrypt($item->id)) }}">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
                                         <a href="{{ route('editJob', encrypt($item->id)) }}" class="ml-2">
