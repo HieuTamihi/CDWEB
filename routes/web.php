@@ -13,8 +13,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\RecruitmentController;
-use App\Http\Controllers\UserController;
 use App\Models\Recruitment;
 use Illuminate\Support\Facades\Route;
 
