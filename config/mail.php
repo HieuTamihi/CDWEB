@@ -99,7 +99,7 @@ return [
     */
 
     'from' => [
-        'address' =>  'trannham05042002@gmail.com',
+        'address' =>  'cdptw2.demo@gmail.com',
         'name' => 'Nhom I',
     ],
 
